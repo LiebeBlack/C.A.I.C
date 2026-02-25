@@ -2,7 +2,7 @@
 # ISLA DIGITAL - Compilador Todos (Unificado)
 # Menu para seleccionar plataforma a compilar
 
-$ProjectPath = Split-Path -Parent $MyInvocation.MyCommand.Path
+$ProjectPath = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 $CompiladoresPath = Join-Path $ProjectPath "compiladores"
 
 function Write-Status {
