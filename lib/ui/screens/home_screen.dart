@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../core/theme/app_theme.dart';
+import 'package:lottie/lottie.dart';
+
+import '../../core/models/badge.dart';
+import '../../core/models/child_profile.dart';
 import '../../core/providers/app_providers.dart';
+import '../../core/theme/app_theme.dart';
+import '../widgets/badge_card.dart';
 import '../widgets/big_button.dart';
 import '../widgets/island_background.dart';
-import 'package:lottie/lottie.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -55,15 +59,15 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildHeader(BuildContext context, profile) {
+  Widget _buildHeader(BuildContext context, ChildProfile? profile) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 28,
                 backgroundColor: IslaColors.sunYellow,
                 child: Icon(
@@ -99,7 +103,7 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildBadgeCounter(BuildContext context, profile) {
+  Widget _buildBadgeCounter(BuildContext context, ChildProfile? profile) {
     final badgeCount = profile?.earnedBadges.length ?? 0;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -128,7 +132,7 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildWelcomeCard(BuildContext context, profile) {
+  Widget _buildWelcomeCard(BuildContext context, ChildProfile? profile) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(20),
@@ -149,7 +153,7 @@ class HomeScreen extends ConsumerWidget {
       ),
       child: Column(
         children: [
-          Icon(
+          const Icon(
             Icons.wb_sunny,
             size: 48,
             color: IslaColors.sunYellow,
@@ -201,6 +205,13 @@ class HomeScreen extends ConsumerWidget {
             color: IslaColors.sunsetPurple,
             onPressed: () => Navigator.pushNamed(context, '/profile'),
           ),
+          const SizedBox(height: 16),
+          BigButton(
+            icon: Icons.photo_library,
+            label: 'Galería Secreta (Assets)',
+            color: IslaColors.oceanDark,
+            onPressed: () => Navigator.pushNamed(context, '/showcase'),
+          ),
         ],
       ),
     );
@@ -219,7 +230,7 @@ class HomeScreen extends ConsumerWidget {
 
   void _showBadgesDialog(BuildContext context, WidgetRef ref) {
     final profile = ref.read(currentProfileProvider);
-    final badges = profile?.earnedBadges ?? [];
+    final earnedIds = profile?.earnedBadges ?? [];
 
     showDialog(
       context: context,
@@ -227,17 +238,19 @@ class HomeScreen extends ConsumerWidget {
         title: const Text('Mis Insignias'),
         content: SizedBox(
           width: double.maxFinite,
-          child: badges.isEmpty
+          child: IslaBadges.allBadges.isEmpty
               ? const Text('¡Completa actividades para ganar insignias!')
-              : ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: badges.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: const Icon(Icons.star, color: IslaColors.sunYellow),
-                      title: Text(badges[index]),
+              : Wrap(
+                  spacing: 12,
+                  runSpacing: 16,
+                  alignment: WrapAlignment.center,
+                  children: IslaBadges.allBadges.map((badge) {
+                    return BadgeCard(
+                      badge: badge,
+                      isEarned: earnedIds.contains(badge.id),
+                      size: 60,
                     );
-                  },
+                  }).toList(),
                 ),
         ),
         actions: [

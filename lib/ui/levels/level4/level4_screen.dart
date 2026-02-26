@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../core/providers/app_providers.dart';
+
 import '../../../core/models/badge.dart';
+import '../../../core/providers/app_providers.dart';
+import '../../../core/theme/app_theme.dart';
 import '../../widgets/island_background.dart';
 import '../../widgets/progress_widgets.dart';
 
@@ -27,9 +28,11 @@ class _Level4ScreenState extends ConsumerState<Level4Screen> {
     setState(() {
       totalProgress += points;
     });
-    ref.read(levelProgressProvider('level_4').notifier).setProgress(totalProgress);
+    ref
+        .read(levelProgressProvider('level_4').notifier)
+        .setProgress(totalProgress);
     ref.read(currentProfileProvider.notifier).addProgress('level_4', points);
-    
+
     if (totalProgress >= 100) {
       _completeLevel();
     }
@@ -92,9 +95,15 @@ class _Level4ScreenState extends ConsumerState<Level4Screen> {
                     child: IndexedStack(
                       index: currentTab,
                       children: [
-                        CalculatorWidget(onProgress: _addProgress, onSuccess: _showSuccessFeedback),
-                        CalendarWidget(onProgress: _addProgress, onSuccess: _showSuccessFeedback),
-                        CameraMissionWidget(onProgress: _addProgress, onSuccess: _showSuccessFeedback),
+                        CalculatorWidget(
+                            onProgress: _addProgress,
+                            onSuccess: _showSuccessFeedback),
+                        CalendarWidget(
+                            onProgress: _addProgress,
+                            onSuccess: _showSuccessFeedback),
+                        CameraMissionWidget(
+                            onProgress: _addProgress,
+                            onSuccess: _showSuccessFeedback),
                       ],
                     ),
                   ),
@@ -153,15 +162,18 @@ class _Level4ScreenState extends ConsumerState<Level4Screen> {
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 decoration: BoxDecoration(
-                  color: isSelected ? IslaColors.sunsetCoral : Colors.transparent,
+                  color:
+                      isSelected ? IslaColors.sunsetCoral : Colors.transparent,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
                   tabs[index],
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        color: isSelected ? IslaColors.white : IslaColors.greyDark,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                        color:
+                            isSelected ? IslaColors.white : IslaColors.greyDark,
+                        fontWeight:
+                            isSelected ? FontWeight.bold : FontWeight.normal,
                       ),
                 ),
               ),
@@ -175,10 +187,10 @@ class _Level4ScreenState extends ConsumerState<Level4Screen> {
 
 /// Calculadora temática con perlas y pescados
 class CalculatorWidget extends StatefulWidget {
+  const CalculatorWidget(
+      {super.key, required this.onProgress, required this.onSuccess});
   final Function(int) onProgress;
   final Function(String) onSuccess;
-
-  const CalculatorWidget({super.key, required this.onProgress, required this.onSuccess});
 
   @override
   State<CalculatorWidget> createState() => _CalculatorWidgetState();
@@ -193,8 +205,16 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
   final List<Map<String, dynamic>> themes = [
     {'icon': Icons.circle, 'label': 'Perlas', 'color': IslaColors.sunYellow},
     {'icon': Icons.set_meal, 'label': 'Peces', 'color': IslaColors.oceanBlue},
-    {'icon': Icons.local_florist, 'label': 'Flores', 'color': IslaColors.sunsetPink},
-    {'icon': Icons.star, 'label': 'Estrellas', 'color': IslaColors.sunsetPurple},
+    {
+      'icon': Icons.local_florist,
+      'label': 'Flores',
+      'color': IslaColors.sunsetPink
+    },
+    {
+      'icon': Icons.star,
+      'label': 'Estrellas',
+      'color': IslaColors.sunsetPurple
+    },
   ];
 
   int currentTheme = 0;
@@ -253,7 +273,8 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(theme['icon'] as IconData, color: theme['color'] as Color, size: 32),
+                Icon(theme['icon'] as IconData,
+                    color: theme['color'] as Color, size: 32),
                 const SizedBox(width: 8),
                 Text(
                   'Sumando ${theme['label']}',
@@ -274,12 +295,15 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildNumberVisual(num1, theme['icon'] as IconData, theme['color'] as Color),
+              _buildNumberVisual(
+                  num1, theme['icon'] as IconData, theme['color'] as Color),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text('+', style: Theme.of(context).textTheme.displayMedium),
+                child:
+                    Text('+', style: Theme.of(context).textTheme.displayMedium),
               ),
-              _buildNumberVisual(num2, theme['icon'] as IconData, theme['color'] as Color),
+              _buildNumberVisual(
+                  num2, theme['icon'] as IconData, theme['color'] as Color),
             ],
           ),
           const SizedBox(height: 32),
@@ -346,18 +370,48 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
 
 /// Calendario de eventos culturales de Margarita
 class CalendarWidget extends StatelessWidget {
+  const CalendarWidget(
+      {super.key, required this.onProgress, required this.onSuccess});
   final Function(int) onProgress;
   final Function(String) onSuccess;
 
-  const CalendarWidget({super.key, required this.onProgress, required this.onSuccess});
-
   final List<Map<String, dynamic>> events = const [
-    {'day': '15', 'month': 'Feb', 'title': 'Fiesta de la Virgen', 'icon': Icons.church},
-    {'day': '25', 'month': 'Mar', 'title': 'Día del Pescador', 'icon': Icons.set_meal},
-    {'day': '08', 'month': 'May', 'title': 'Festival del Cactus', 'icon': Icons.local_florist},
-    {'day': '24', 'month': 'Jul', 'title': 'Día de Margarita', 'icon': Icons.celebration},
-    {'day': '12', 'month': 'Oct', 'title': 'Fiesta del Mar', 'icon': Icons.waves},
-    {'day': '25', 'month': 'Dic', 'title': 'Navidad Isleña', 'icon': Icons.festival},
+    {
+      'day': '15',
+      'month': 'Feb',
+      'title': 'Fiesta de la Virgen',
+      'icon': Icons.church
+    },
+    {
+      'day': '25',
+      'month': 'Mar',
+      'title': 'Día del Pescador',
+      'icon': Icons.set_meal
+    },
+    {
+      'day': '08',
+      'month': 'May',
+      'title': 'Festival del Cactus',
+      'icon': Icons.local_florist
+    },
+    {
+      'day': '24',
+      'month': 'Jul',
+      'title': 'Día de Margarita',
+      'icon': Icons.celebration
+    },
+    {
+      'day': '12',
+      'month': 'Oct',
+      'title': 'Fiesta del Mar',
+      'icon': Icons.waves
+    },
+    {
+      'day': '25',
+      'month': 'Dic',
+      'title': 'Navidad Isleña',
+      'icon': Icons.festival
+    },
   ];
 
   @override
@@ -376,7 +430,10 @@ class CalendarWidget extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             'Toca cada evento para aprender',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: IslaColors.grey),
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium
+                ?.copyWith(color: IslaColors.grey),
           ),
           const SizedBox(height: 16),
           Expanded(
@@ -461,7 +518,8 @@ class CalendarWidget extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(event['title'] as String),
-        content: Text('${event['day']} de ${event['month']}\n\nEste es un evento importante de la Isla de Margarita.'),
+        content: Text(
+            '${event['day']} de ${event['month']}\n\nEste es un evento importante de la Isla de Margarita.'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
@@ -475,10 +533,10 @@ class CalendarWidget extends StatelessWidget {
 
 /// Misión Cámara - Simulador de fotos del hogar
 class CameraMissionWidget extends StatefulWidget {
+  const CameraMissionWidget(
+      {super.key, required this.onProgress, required this.onSuccess});
   final Function(int) onProgress;
   final Function(String) onSuccess;
-
-  const CameraMissionWidget({super.key, required this.onProgress, required this.onSuccess});
 
   @override
   State<CameraMissionWidget> createState() => _CameraMissionWidgetState();
@@ -518,7 +576,10 @@ class _CameraMissionWidgetState extends State<CameraMissionWidget> {
           const SizedBox(height: 8),
           Text(
             'Encuentra y "fotografía" estos objetos',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: IslaColors.grey),
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium
+                ?.copyWith(color: IslaColors.grey),
           ),
           const SizedBox(height: 16),
           Container(
@@ -584,16 +645,19 @@ class _CameraMissionWidgetState extends State<CameraMissionWidget> {
     );
   }
 
-  Widget _buildMissionCard(String target, IconData icon, bool completed, VoidCallback onTap) {
+  Widget _buildMissionCard(
+      String target, IconData icon, bool completed, VoidCallback onTap) {
     return Material(
       elevation: completed ? 2 : 6,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         onTap: completed ? null : onTap,
         borderRadius: BorderRadius.circular(20),
-        child: Container(
+        child: DecoratedBox(
           decoration: BoxDecoration(
-            color: completed ? IslaColors.palmLight.withOpacity(0.3) : IslaColors.white,
+            color: completed
+                ? IslaColors.palmLight.withOpacity(0.3)
+                : IslaColors.white,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
               color: completed ? IslaColors.success : IslaColors.sunsetCoral,

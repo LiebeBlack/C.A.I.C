@@ -1,0 +1,281 @@
+Resolving dependencies...
+Downloading packages...
+  archive 3.6.1 (4.0.9 available)
+  audioplayers 5.2.1 (6.5.1 available)
+  audioplayers_android 4.0.3 (5.2.1 available)
+  audioplayers_darwin 5.0.2 (6.3.0 available)
+  audioplayers_linux 3.1.0 (4.2.1 available)
+  audioplayers_platform_interface 6.1.0 (7.1.1 available)
+  audioplayers_web 4.1.0 (5.1.1 available)
+  audioplayers_windows 3.1.0 (4.2.1 available)
+  confetti 0.7.0 (0.8.0 available)
+  flutter_launcher_icons 0.13.1 (0.14.4 available)
+  flutter_lints 3.0.2 (6.0.0 available)
+  flutter_native_splash 2.4.4 (2.4.7 available)
+  flutter_riverpod 2.6.1 (3.2.1 available)
+  google_fonts 6.3.3 (8.0.2 available)
+  image 4.3.0 (4.8.0 available)
+  js 0.6.7 (0.7.2 available)
+  lints 3.0.0 (6.1.0 available)
+  lottie 2.7.0 (3.3.2 available)
+  meta 1.17.0 (1.18.1 available)
+  riverpod 2.6.1 (3.2.1 available)
+  shared_preferences_android 2.4.20 (2.4.21 available)
+Got dependencies!
+21 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Analyzing v0.4.0...                                             
+
+warning • 'invariant_booleans' was removed in Dart '3.0.0' • analysis_options.yaml:75:5 • removed_lint
+warning • 'prefer_equal_for_default_values' was removed in Dart '3.0.0' • analysis_options.yaml:102:5 • removed_lint
+   info • Constructor declarations should be before non-constructor declarations • lib/core/models/badge.dart:14:9 • sort_constructors_first
+   info • Constructor declarations should be before non-constructor declarations • lib/core/models/child_profile.dart:13:3 • sort_constructors_first
+   info • Constructor declarations should be before non-constructor declarations • lib/core/models/child_profile.dart:39:11 • sort_constructors_first
+   info • Sort directive sections alphabetically • lib/core/models/models.dart:4:1 • directives_ordering
+   info • Constructor declarations should be before non-constructor declarations • lib/core/providers/app_providers.dart:108:9 • sort_constructors_first
+   info • Constructor declarations should be before non-constructor declarations • lib/core/providers/app_providers.dart:187:9 • sort_constructors_first
+   info • Constructor declarations should be before non-constructor declarations • lib/core/providers/app_providers.dart:232:3 • sort_constructors_first
+warning • Don't invoke 'print' in production code • lib/core/services/audio_service.dart:13:7 • avoid_print
+warning • Don't invoke 'print' in production code • lib/core/services/audio_service.dart:23:7 • avoid_print
+warning • Don't invoke 'print' in production code • lib/core/services/audio_service.dart:33:7 • avoid_print
+warning • Don't invoke 'print' in production code • lib/core/services/audio_service.dart:43:7 • avoid_print
+warning • Don't invoke 'print' in production code • lib/core/services/audio_service.dart:53:7 • avoid_print
+   info • Sort directive sections alphabetically • lib/core/services/services.dart:2:1 • directives_ordering
+warning • Unused import: 'package:flutter_riverpod/flutter_riverpod.dart' • lib/core/theme/app_theme.dart:2:8 • unused_import
+   info • The value of the argument is redundant because it matches the default value • lib/core/theme/app_theme.dart:120:21 • avoid_redundant_argument_values
+   info • 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre • lib/core/theme/app_theme.dart:125:9 • deprecated_member_use
+   info • 'onBackground' is deprecated and shouldn't be used. Use onSurface instead. This feature was deprecated after v3.18.0-0.1.pre • lib/core/theme/app_theme.dart:129:9 • deprecated_member_use
+   info • The value of the argument is redundant because it matches the default value • lib/core/utils/input_adapter.dart:9:72 • avoid_redundant_argument_values
+warning • Use 'const' with the constructor to improve performance • lib/core/utils/input_adapter.dart:16:12 • prefer_const_constructors
+   info • Use a 'ColoredBox' rather than a 'Container' with only a 'Color' • lib/core/utils/input_adapter.dart:37:16 • use_colored_box
+   info • Constructor declarations should be before non-constructor declarations • lib/core/utils/input_adapter.dart:54:9 • sort_constructors_first
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/utils/input_adapter.dart:93:43 • deprecated_member_use
+  error • The named parameter 'transform' isn't defined • lib/core/utils/input_adapter.dart:99:13 • undefined_named_parameter
+  error • Expected an identifier • lib/core/utils/input_adapter.dart:100:37 • missing_identifier
+  error • Expected to find ':' • lib/core/utils/input_adapter.dart:100:37 • expected_token
+  error • Expected to find ')' • lib/core/utils/input_adapter.dart:101:17 • expected_token
+   info • Constructor declarations should be before non-constructor declarations • lib/core/utils/input_adapter.dart:118:9 • sort_constructors_first
+   info • Sort directive sections alphabetically • lib/main.dart:4:1 • directives_ordering
+   info • Sort directive sections alphabetically • lib/main.dart:8:1 • directives_ordering
+   info • Sort directive sections alphabetically • lib/ui/levels/level1/level1_screen.dart:4:1 • directives_ordering
+   info • Sort directive sections alphabetically • lib/ui/levels/level1/level1_screen.dart:5:1 • directives_ordering
+   info • Sort directive sections alphabetically • lib/ui/levels/level1/level1_screen.dart:7:1 • directives_ordering
+warning • Unused import: '../../widgets/big_button.dart' • lib/ui/levels/level1/level1_screen.dart:7:8 • unused_import
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level1/level1_screen.dart:192:41 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level1/level1_screen.dart:235:43 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level1/level1_screen.dart:278:45 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level1/level1_screen.dart:339:51 • deprecated_member_use
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level1/level1_screen.dart:437:19 • cast_nullable_to_non_nullable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level1/level1_screen.dart:438:19 • cast_nullable_to_non_nullable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level1/level1_screen.dart:439:19 • cast_nullable_to_non_nullable
+   info • Use 'DecoratedBox' rather than a 'Container' with only a 'Decoration' • lib/ui/levels/level1/level1_screen.dart:469:16 • use_decorated_box
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/levels/level1/level1_screen.dart:506:9 • sort_constructors_first
+   info • Unnecessary use of a 'double' literal • lib/ui/levels/level1/level1_screen.dart:530:44 • prefer_int_literals
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level1/level1_screen.dart:560:37 • deprecated_member_use
+   info • Sort directive sections alphabetically • lib/ui/levels/level2/level2_screen.dart:4:1 • directives_ordering
+   info • Sort directive sections alphabetically • lib/ui/levels/level2/level2_screen.dart:5:1 • directives_ordering
+   info • Sort directive sections alphabetically • lib/ui/levels/level2/level2_screen.dart:8:1 • directives_ordering
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level2/level2_screen.dart:190:73 • deprecated_member_use
+  error • The argument type 'dynamic' can't be assigned to the parameter type 'String'.  • lib/ui/levels/level2/level2_screen.dart:192:16 • argument_type_not_assignable
+  error • The argument type 'dynamic' can't be assigned to the parameter type 'String'.  • lib/ui/levels/level2/level2_screen.dart:196:16 • argument_type_not_assignable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:206:19 • cast_nullable_to_non_nullable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:207:19 • cast_nullable_to_non_nullable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:208:19 • cast_nullable_to_non_nullable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:209:19 • cast_nullable_to_non_nullable
+   info • Use 'DecoratedBox' rather than a 'Container' with only a 'Decoration' • lib/ui/levels/level2/level2_screen.dart:239:16 • use_decorated_box
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level2/level2_screen.dart:241:26 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level2/level2_screen.dart:271:67 • deprecated_member_use
+  error • The argument type 'dynamic' can't be assigned to the parameter type 'String'.  • lib/ui/levels/level2/level2_screen.dart:273:16 • argument_type_not_assignable
+  error • The argument type 'dynamic' can't be assigned to the parameter type 'String'.  • lib/ui/levels/level2/level2_screen.dart:277:16 • argument_type_not_assignable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:287:25 • cast_nullable_to_non_nullable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:288:26 • cast_nullable_to_non_nullable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:289:26 • cast_nullable_to_non_nullable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:291:42 • cast_nullable_to_non_nullable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:291:72 • cast_nullable_to_non_nullable
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level2/level2_screen.dart:341:75 • deprecated_member_use
+  error • The argument type 'dynamic' can't be assigned to the parameter type 'String'.  • lib/ui/levels/level2/level2_screen.dart:343:16 • argument_type_not_assignable
+  error • The argument type 'dynamic' can't be assigned to the parameter type 'String'.  • lib/ui/levels/level2/level2_screen.dart:347:16 • argument_type_not_assignable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:356:19 • cast_nullable_to_non_nullable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:357:19 • cast_nullable_to_non_nullable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:358:19 • cast_nullable_to_non_nullable
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level2/level2_screen.dart:374:77 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level2/level2_screen.dart:411:66 • deprecated_member_use
+  error • The argument type 'dynamic' can't be assigned to the parameter type 'String'.  • lib/ui/levels/level2/level2_screen.dart:413:16 • argument_type_not_assignable
+  error • The argument type 'dynamic' can't be assigned to the parameter type 'String'.  • lib/ui/levels/level2/level2_screen.dart:417:16 • argument_type_not_assignable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:425:39 • cast_nullable_to_non_nullable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:425:64 • cast_nullable_to_non_nullable
+   info • Don't cast a nullable value to a non-nullable type • lib/ui/levels/level2/level2_screen.dart:425:85 • cast_nullable_to_non_nullable
+   info • Sort directive sections alphabetically • lib/ui/levels/level3/level3_screen.dart:4:1 • directives_ordering
+   info • Sort directive sections alphabetically • lib/ui/levels/level3/level3_screen.dart:5:1 • directives_ordering
+warning • Use 'const' with the constructor to improve performance • lib/ui/levels/level3/level3_screen.dart:83:16 • prefer_const_constructors
+warning • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/ui/levels/level3/level3_screen.dart:84:21 • prefer_const_literals_to_create_immutables
+warning • Use 'const' with the constructor to improve performance • lib/ui/levels/level3/level3_screen.dart:87:13 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • lib/ui/levels/level3/level3_screen.dart:87:38 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level3/level3_screen.dart:208:43 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level3/level3_screen.dart:235:46 • deprecated_member_use
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/levels/level3/level3_screen.dart:285:19 • avoid_dynamic_calls
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/levels/level3/level3_screen.dart:286:19 • avoid_dynamic_calls
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/levels/level3/level3_screen.dart:287:19 • avoid_dynamic_calls
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/levels/level3/level3_screen.dart:288:19 • avoid_dynamic_calls
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level3/level3_screen.dart:325:29 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level3/level3_screen.dart:335:54 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level3/level3_screen.dart:335:90 • deprecated_member_use
+   info • Sort directive sections alphabetically • lib/ui/levels/level4/level4_screen.dart:4:1 • directives_ordering
+   info • Sort directive sections alphabetically • lib/ui/levels/level4/level4_screen.dart:5:1 • directives_ordering
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/levels/level4/level4_screen.dart:181:9 • sort_constructors_first
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level4/level4_screen.dart:250:48 • deprecated_member_use
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/levels/level4/level4_screen.dart:352:9 • sort_constructors_first
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level4/level4_screen.dart:416:49 • deprecated_member_use
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/levels/level4/level4_screen.dart:481:9 • sort_constructors_first
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level4/level4_screen.dart:527:43 • deprecated_member_use
+   info • Use 'DecoratedBox' rather than a 'Container' with only a 'Decoration' • lib/ui/levels/level4/level4_screen.dart:594:16 • use_decorated_box
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level4/level4_screen.dart:596:53 • deprecated_member_use
+   info • Place 'dart:' imports before other imports • lib/ui/levels/level5/level5_screen.dart:2:1 • directives_ordering
+warning • Unused import: 'dart:math' • lib/ui/levels/level5/level5_screen.dart:2:8 • unused_import
+   info • Sort directive sections alphabetically • lib/ui/levels/level5/level5_screen.dart:5:1 • directives_ordering
+   info • Sort directive sections alphabetically • lib/ui/levels/level5/level5_screen.dart:6:1 • directives_ordering
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/levels/level5/level5_screen.dart:194:9 • sort_constructors_first
+   info • The value of the argument is redundant because it matches the default value • lib/ui/levels/level5/level5_screen.dart:247:36 • avoid_redundant_argument_values
+   info • The value of the argument is redundant because it matches the default value • lib/ui/levels/level5/level5_screen.dart:247:49 • avoid_redundant_argument_values
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level5/level5_screen.dart:287:43 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level5/level5_screen.dart:356:40 • deprecated_member_use
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/levels/level5/level5_screen.dart:393:3 • sort_constructors_first
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/levels/level5/level5_screen.dart:399:3 • sort_constructors_first
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/levels/level5/level5_screen.dart:429:9 • sort_constructors_first
+   info • The variable 'row' should be final • lib/ui/levels/level5/level5_screen.dart:487:16 • prefer_final_in_for_each
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level5/level5_screen.dart:538:49 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/levels/level5/level5_screen.dart:614:45 • deprecated_member_use
+   info • Use a 'SizedBox' to add whitespace to a layout • lib/ui/levels/level5/level5_screen.dart:625:11 • sized_box_for_whitespace
+   info • Sort directive sections alphabetically • lib/ui/screens/home_screen.dart:4:1 • directives_ordering
+   info • Place 'package:' imports before relative imports • lib/ui/screens/home_screen.dart:7:1 • directives_ordering
+   info • Unnecessary use of a 'double' literal • lib/ui/screens/home_screen.dart:60:37 • prefer_int_literals
+warning • Use 'const' with the constructor to improve performance • lib/ui/screens/home_screen.dart:66:15 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • lib/ui/screens/home_screen.dart:69:24 • prefer_const_constructors
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/screens/home_screen.dart:86:21 • avoid_dynamic_calls
+  error • The argument type 'dynamic' can't be assigned to the parameter type 'String'.  • lib/ui/screens/home_screen.dart:86:21 • argument_type_not_assignable
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/screens/home_screen.dart:103:24 • avoid_dynamic_calls
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/screens/home_screen.dart:103:24 • avoid_dynamic_calls
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/screens/home_screen.dart:107:37 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/screens/home_screen.dart:144:41 • deprecated_member_use
+warning • Use 'const' with the constructor to improve performance • lib/ui/screens/home_screen.dart:152:11 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/screens/home_screen.dart:170:43 • deprecated_member_use
+   info • Sort directive sections alphabetically • lib/ui/screens/level_select_screen.dart:4:1 • directives_ordering
+   info • Sort directive sections alphabetically • lib/ui/screens/level_select_screen.dart:7:1 • directives_ordering
+   info • Place 'dart:' imports before other imports • lib/ui/screens/parental_dashboard_screen.dart:3:1 • directives_ordering
+   info • Sort directive sections alphabetically • lib/ui/screens/parental_dashboard_screen.dart:5:1 • directives_ordering
+warning • Unused import: '../widgets/progress_widgets.dart' • lib/ui/screens/parental_dashboard_screen.dart:7:8 • unused_import
+warning • Use 'const' with the constructor to improve performance • lib/ui/screens/parental_dashboard_screen.dart:101:11 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/screens/parental_dashboard_screen.dart:130:47 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/screens/parental_dashboard_screen.dart:221:41 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/screens/parental_dashboard_screen.dart:263:35 • deprecated_member_use
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/screens/parental_dashboard_screen.dart:268:28 • avoid_dynamic_calls
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/screens/parental_dashboard_screen.dart:278:16 • avoid_dynamic_calls
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/screens/parental_dashboard_screen.dart:284:16 • avoid_dynamic_calls
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/screens/parental_dashboard_screen.dart:290:16 • avoid_dynamic_calls
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/screens/parental_dashboard_screen.dart:290:16 • avoid_dynamic_calls
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/screens/parental_dashboard_screen.dart:296:16 • avoid_dynamic_calls
+   info • 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor instead. This feature was deprecated after v3.31.0-2.0.pre • lib/ui/screens/parental_dashboard_screen.dart:385:13 • deprecated_member_use
+   info • 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor instead. This feature was deprecated after v3.31.0-2.0.pre • lib/ui/screens/parental_dashboard_screen.dart:392:13 • deprecated_member_use
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/screens/parental_dashboard_screen.dart:411:16 • avoid_dynamic_calls
+   info • Method invocation or property access on a 'dynamic' target • lib/ui/screens/parental_dashboard_screen.dart:422:26 • avoid_dynamic_calls
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/screens/parental_dashboard_screen.dart:426:63 • deprecated_member_use
+   info • Sort directive sections alphabetically • lib/ui/screens/profile_setup_screen.dart:4:1 • directives_ordering
+   info • Sort directive sections alphabetically • lib/ui/screens/profile_setup_screen.dart:6:1 • directives_ordering
+   info • The value of the argument is redundant because it matches the default value • lib/ui/screens/profile_setup_screen.dart:72:35 • avoid_redundant_argument_values
+warning • Use 'const' with the constructor to improve performance • lib/ui/screens/profile_setup_screen.dart:100:9 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/screens/profile_setup_screen.dart:159:57 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/screens/profile_setup_screen.dart:262:70 • deprecated_member_use
+   info • Sort directive sections alphabetically • lib/ui/widgets/badge_widgets.dart:3:1 • directives_ordering
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/widgets/badge_widgets.dart:12:9 • sort_constructors_first
+   info • Unnecessary use of a 'double' literal • lib/ui/widgets/badge_widgets.dart:50:43 • prefer_int_literals
+   info • Unnecessary use of a 'double' literal • lib/ui/widgets/badge_widgets.dart:50:53 • prefer_int_literals
+   info • Use a 'SizedBox' to add whitespace to a layout • lib/ui/widgets/badge_widgets.dart:81:20 • sized_box_for_whitespace
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/badge_widgets.dart:93:46 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/badge_widgets.dart:94:46 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/badge_widgets.dart:117:57 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/badge_widgets.dart:145:51 • deprecated_member_use
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/widgets/badge_widgets.dart:208:9 • sort_constructors_first
+warning • Use 'const' with the constructor to improve performance • lib/ui/widgets/badge_widgets.dart:221:21 • prefer_const_constructors
+warning • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/ui/widgets/badge_widgets.dart:222:21 • prefer_const_literals_to_create_immutables
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/badge_widgets.dart:232:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/badge_widgets.dart:285:36 • deprecated_member_use
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/widgets/badge_widgets.dart:334:9 • sort_constructors_first
+  error • The method 'IslandBackground' isn't defined for the type 'BadgesCollectionScreen' • lib/ui/widgets/badge_widgets.dart:342:13 • undefined_method
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/badge_widgets.dart:381:43 • deprecated_member_use
+  error • Undefined name 'IslaBadges' • lib/ui/widgets/badge_widgets.dart:385:43 • undefined_identifier
+  error • Undefined name 'IslaBadges' • lib/ui/widgets/badge_widgets.dart:406:18 • undefined_identifier
+  error • Undefined name 'IslaBadges' • lib/ui/widgets/badge_widgets.dart:408:23 • undefined_identifier
+warning • Use 'const' with the constructor to improve performance • lib/ui/widgets/badge_widgets.dart:423:15 • prefer_const_constructors
+   info • The value of the argument is redundant because it matches the default value • lib/ui/widgets/badge_widgets.dart:423:62 • avoid_redundant_argument_values
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/badge_widgets.dart:428:57 • deprecated_member_use
+  error • Undefined name 'context' • lib/ui/widgets/badge_widgets.dart:445:33 • undefined_identifier
+  error • Undefined name 'context' • lib/ui/widgets/badge_widgets.dart:453:33 • undefined_identifier
+  error • Directives must appear before any declarations • lib/ui/widgets/badge_widgets.dart:497:1 • directive_after_declaration
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/widgets/big_button.dart:14:9 • sort_constructors_first
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/big_button.dart:29:26 • deprecated_member_use
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/widgets/big_button.dart:81:9 • sort_constructors_first
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/big_button.dart:98:30 • deprecated_member_use
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/widgets/big_button.dart:149:9 • sort_constructors_first
+   info • Unnecessary use of a 'double' literal • lib/ui/widgets/big_button.dart:173:44 • prefer_int_literals
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/big_button.dart:203:37 • deprecated_member_use
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/widgets/island_background.dart:10:9 • sort_constructors_first
+   info • Use 'DecoratedBox' rather than a 'Container' with only a 'Decoration' • lib/ui/widgets/island_background.dart:18:12 • use_decorated_box
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/island_background.dart:58:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/island_background.dart:59:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/island_background.dart:75:35 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/island_background.dart:76:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/island_background.dart:77:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/island_background.dart:98:35 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/island_background.dart:108:34 • deprecated_member_use
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/widgets/island_background.dart:141:9 • sort_constructors_first
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/island_background.dart:160:41 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/island_background.dart:166:34 • deprecated_member_use
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/widgets/progress_widgets.dart:14:9 • sort_constructors_first
+   info • Unnecessary use of parentheses • lib/ui/widgets/progress_widgets.dart:27:24 • unnecessary_parenthesis
+   info • The value of the argument is redundant because it matches the default value • lib/ui/widgets/progress_widgets.dart:67:30 • avoid_redundant_argument_values
+   info • The value of the argument is redundant because it matches the default value • lib/ui/widgets/progress_widgets.dart:68:28 • avoid_redundant_argument_values
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/widgets/progress_widgets.dart:104:9 • sort_constructors_first
+   info • Constructor declarations should be before non-constructor declarations • lib/ui/widgets/progress_widgets.dart:153:9 • sort_constructors_first
+   info • Use a 'ColoredBox' rather than a 'Container' with only a 'Color' • lib/ui/widgets/progress_widgets.dart:164:12 • use_colored_box
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/progress_widgets.dart:165:27 • deprecated_member_use
+   info • Unnecessary use of a 'double' literal • lib/ui/widgets/progress_widgets.dart:168:31 • prefer_int_literals
+   info • Unnecessary use of a 'double' literal • lib/ui/widgets/progress_widgets.dart:168:41 • prefer_int_literals
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/ui/widgets/progress_widgets.dart:180:51 • deprecated_member_use
+warning • Use 'const' with the constructor to improve performance • lib/ui/widgets/progress_widgets.dart:189:21 • prefer_const_constructors
+   info • Sort directive sections alphabetically • test/navigation_test.dart:8:1 • directives_ordering
+   info • Sort directive sections alphabetically • test/navigation_test.dart:9:1 • directives_ordering
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:50:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:69:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:87:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:105:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:123:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:141:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:156:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:174:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:189:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:207:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:223:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:241:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:256:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:272:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:290:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:312:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:329:9 • prefer_const_constructors
+warning • Use 'const' with the constructor to improve performance • test/navigation_test.dart:344:9 • prefer_const_constructors
+   info • 'window' is deprecated and shouldn't be used. Use WidgetTester.platformDispatcher or WidgetTester.view instead. Deprecated to prepare for the upcoming multi-window support. This feature was deprecated after v3.9.0-0.1.pre • test/navigation_test.dart:364:22 • deprecated_member_use
+   info • 'physicalSizeTestValue' is deprecated and shouldn't be used. Use WidgetTester.view.physicalSize instead. Deprecated to prepare for the upcoming multi-window support. This feature was deprecated after v3.9.0-0.1.pre • test/navigation_test.dart:364:29 • deprecated_member_use
+   info • 'window' is deprecated and shouldn't be used. Use WidgetTester.platformDispatcher or WidgetTester.view instead. Deprecated to prepare for the upcoming multi-window support. This feature was deprecated after v3.9.0-0.1.pre • test/navigation_test.dart:365:22 • deprecated_member_use
+   info • 'devicePixelRatioTestValue' is deprecated and shouldn't be used. Use WidgetTester.view.devicePixelRatio instead. Deprecated to prepare for the upcoming multi-window support. This feature was deprecated after v3.9.0-0.1.pre • test/navigation_test.dart:365:29 • deprecated_member_use
+   info • 'window' is deprecated and shouldn't be used. Use WidgetTester.platformDispatcher or WidgetTester.view instead. Deprecated to prepare for the upcoming multi-window support. This feature was deprecated after v3.9.0-0.1.pre • test/navigation_test.dart:378:34 • deprecated_member_use
+   info • 'clearPhysicalSizeTestValue' is deprecated and shouldn't be used. Use WidgetTester.view.resetPhysicalSize() instead. Deprecated to prepare for the upcoming multi-window support. This feature was deprecated after v3.9.0-0.1.pre • test/navigation_test.dart:378:41 • deprecated_member_use
+   info • 'window' is deprecated and shouldn't be used. Use WidgetTester.platformDispatcher or WidgetTester.view instead. Deprecated to prepare for the upcoming multi-window support. This feature was deprecated after v3.9.0-0.1.pre • test/navigation_test.dart:383:22 • deprecated_member_use
+   info • 'physicalSizeTestValue' is deprecated and shouldn't be used. Use WidgetTester.view.physicalSize instead. Deprecated to prepare for the upcoming multi-window support. This feature was deprecated after v3.9.0-0.1.pre • test/navigation_test.dart:383:29 • deprecated_member_use
+   info • 'window' is deprecated and shouldn't be used. Use WidgetTester.platformDispatcher or WidgetTester.view instead. Deprecated to prepare for the upcoming multi-window support. This feature was deprecated after v3.9.0-0.1.pre • test/navigation_test.dart:384:22 • deprecated_member_use
+   info • 'devicePixelRatioTestValue' is deprecated and shouldn't be used. Use WidgetTester.view.devicePixelRatio instead. Deprecated to prepare for the upcoming multi-window support. This feature was deprecated after v3.9.0-0.1.pre • test/navigation_test.dart:384:29 • deprecated_member_use
+   info • 'window' is deprecated and shouldn't be used. Use WidgetTester.platformDispatcher or WidgetTester.view instead. Deprecated to prepare for the upcoming multi-window support. This feature was deprecated after v3.9.0-0.1.pre • test/navigation_test.dart:397:34 • deprecated_member_use
+   info • 'clearPhysicalSizeTestValue' is deprecated and shouldn't be used. Use WidgetTester.view.resetPhysicalSize() instead. Deprecated to prepare for the upcoming multi-window support. This feature was deprecated after v3.9.0-0.1.pre • test/navigation_test.dart:397:41 • deprecated_member_use
+   info • Constructor declarations should be before non-constructor declarations • test/navigation_test.dart:409:9 • sort_constructors_first
+   info • Constructor declarations should be before non-constructor declarations • test/navigation_test.dart:434:9 • sort_constructors_first
+   info • Constructor declarations should be before non-constructor declarations • test/navigation_test.dart:462:9 • sort_constructors_first
+   info • Sort directive sections alphabetically • test/widget_test.dart:11:1 • directives_ordering
+

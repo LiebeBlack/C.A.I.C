@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/foundation.dart';
 
 class BackgroundMusicService {
   static final AudioPlayer _player = AudioPlayer();
@@ -10,7 +11,7 @@ class BackgroundMusicService {
       await _player.setReleaseMode(ReleaseMode.loop);
       await startMusic();
     } catch (e) {
-      print('Error initializing background music: $e');
+      debugPrint('Error initializing background music: $e');
     }
   }
 
@@ -20,7 +21,7 @@ class BackgroundMusicService {
       await _player.play(AssetSource('audio/music/01.mp3'));
       _isPlaying = true;
     } catch (e) {
-      print('Error playing background music: $e');
+      debugPrint('Error playing background music: $e');
     }
   }
 
@@ -30,7 +31,7 @@ class BackgroundMusicService {
       await _player.stop();
       _isPlaying = false;
     } catch (e) {
-      print('Error stopping background music: $e');
+      debugPrint('Error stopping background music: $e');
     }
   }
 
@@ -40,7 +41,7 @@ class BackgroundMusicService {
       await _player.pause();
       _isPlaying = false;
     } catch (e) {
-      print('Error pausing background music: $e');
+      debugPrint('Error pausing background music: $e');
     }
   }
 
@@ -50,7 +51,7 @@ class BackgroundMusicService {
       await _player.resume();
       _isPlaying = true;
     } catch (e) {
-      print('Error resuming background music: $e');
+      debugPrint('Error resuming background music: $e');
     }
   }
 

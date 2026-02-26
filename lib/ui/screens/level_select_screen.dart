@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../core/theme/app_theme.dart';
+
 import '../../core/providers/app_providers.dart';
-import '../widgets/island_background.dart';
-import '../widgets/progress_widgets.dart';
+import '../../core/theme/app_theme.dart';
+import '../../core/utils/color_utils.dart';
 import '../levels/level1/level1_screen.dart';
 import '../levels/level2/level2_screen.dart';
 import '../levels/level3/level3_screen.dart';
 import '../levels/level4/level4_screen.dart';
 import '../levels/level5/level5_screen.dart';
+import '../widgets/island_background.dart';
+import '../widgets/progress_widgets.dart';
 
 class LevelSelectScreen extends ConsumerWidget {
   const LevelSelectScreen({super.key});
@@ -76,7 +78,7 @@ class LevelSelectScreen extends ConsumerWidget {
                     final level = levels[index];
                     final isUnlocked = index < currentLevel;
                     final isCurrent = index == currentLevel - 1;
-                    
+
                     return _buildLevelCard(
                       context,
                       level,
@@ -125,7 +127,7 @@ class LevelSelectScreen extends ConsumerWidget {
     int progress,
   ) {
     final color = level['color'] as Color;
-    
+
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       child: Opacity(
@@ -152,7 +154,7 @@ class LevelSelectScreen extends ConsumerWidget {
                     height: 64,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [color, _darkenColor(color, 0.2)],
+                        colors: [color, ColorUtils.darken(color, 0.2)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
@@ -171,17 +173,21 @@ class LevelSelectScreen extends ConsumerWidget {
                       children: [
                         Text(
                           level['title'] as String,
-                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: isUnlocked ? IslaColors.black : IslaColors.greyDark,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: isUnlocked
+                                        ? IslaColors.black
+                                        : IslaColors.greyDark,
+                                  ),
                         ),
                         const SizedBox(height: 4),
                         Text(
                           level['subtitle'] as String,
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: IslaColors.greyDark,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: IslaColors.greyDark,
+                                  ),
                         ),
                         if (isUnlocked) ...[
                           const SizedBox(height: 12),
@@ -259,10 +265,5 @@ class LevelSelectScreen extends ConsumerWidget {
           const SnackBar(content: Text('Nivel no disponible')),
         );
     }
-  }
-
-  Color _darkenColor(Color color, double amount) {
-    final hsl = HSLColor.fromColor(color);
-    return hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0)).toColor();
   }
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../core/providers/app_providers.dart';
+
 import '../../../core/models/badge.dart';
+import '../../../core/providers/app_providers.dart';
+import '../../../core/theme/app_theme.dart';
 import '../../widgets/island_background.dart';
 import '../../widgets/progress_widgets.dart';
 
@@ -28,7 +28,9 @@ class _Level5ScreenState extends ConsumerState<Level5Screen> {
     setState(() {
       totalProgress += points;
     });
-    ref.read(levelProgressProvider('level_5').notifier).setProgress(totalProgress);
+    ref
+        .read(levelProgressProvider('level_5').notifier)
+        .setProgress(totalProgress);
     ref.read(currentProfileProvider.notifier).addProgress('level_5', points);
 
     if (totalProgress >= 100) {
@@ -96,8 +98,12 @@ class _Level5ScreenState extends ConsumerState<Level5Screen> {
                     child: IndexedStack(
                       index: currentTab,
                       children: [
-                        DrawingCanvas(onProgress: _addProgress, onSuccess: _showSuccessFeedback),
-                        MusicSequencer(onProgress: _addProgress, onSuccess: _showSuccessFeedback),
+                        DrawingCanvas(
+                            onProgress: _addProgress,
+                            onSuccess: _showSuccessFeedback),
+                        MusicSequencer(
+                            onProgress: _addProgress,
+                            onSuccess: _showSuccessFeedback),
                       ],
                     ),
                   ),
@@ -156,7 +162,8 @@ class _Level5ScreenState extends ConsumerState<Level5Screen> {
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 decoration: BoxDecoration(
-                  color: isSelected ? IslaColors.sunsetPink : Colors.transparent,
+                  color:
+                      isSelected ? IslaColors.sunsetPink : Colors.transparent,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Row(
@@ -165,14 +172,19 @@ class _Level5ScreenState extends ConsumerState<Level5Screen> {
                     Icon(
                       index == 0 ? Icons.brush : Icons.music_note,
                       size: 20,
-                      color: isSelected ? IslaColors.white : IslaColors.greyDark,
+                      color:
+                          isSelected ? IslaColors.white : IslaColors.greyDark,
                     ),
                     const SizedBox(width: 4),
                     Text(
                       tabs[index],
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                            color: isSelected ? IslaColors.white : IslaColors.greyDark,
-                            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                            color: isSelected
+                                ? IslaColors.white
+                                : IslaColors.greyDark,
+                            fontWeight: isSelected
+                                ? FontWeight.bold
+                                : FontWeight.normal,
                           ),
                     ),
                   ],
@@ -188,10 +200,10 @@ class _Level5ScreenState extends ConsumerState<Level5Screen> {
 
 /// Lienzo de dibujo con colores caribeños
 class DrawingCanvas extends StatefulWidget {
+  const DrawingCanvas(
+      {super.key, required this.onProgress, required this.onSuccess});
   final Function(int) onProgress;
   final Function(String) onSuccess;
-
-  const DrawingCanvas({super.key, required this.onProgress, required this.onSuccess});
 
   @override
   State<DrawingCanvas> createState() => _DrawingCanvasState();
@@ -244,7 +256,7 @@ class _DrawingCanvasState extends State<DrawingCanvas> {
 
   void _onPanEnd(DragEndDetails details) {
     setState(() {
-      points.add(DrawPoint(offset: null, paint: null));
+      points.add(DrawPoint());
       strokesCount++;
       if (strokesCount >= 5) {
         widget.onSuccess('¡Gran obra de arte!');
@@ -387,16 +399,14 @@ class _DrawingCanvasState extends State<DrawingCanvas> {
 }
 
 class DrawPoint {
+  DrawPoint({this.offset, this.paint});
   final Offset? offset;
   final Paint? paint;
-
-  DrawPoint({this.offset, this.paint});
 }
 
 class DrawingPainter extends CustomPainter {
-  final List<DrawPoint> points;
-
   DrawingPainter({required this.points});
+  final List<DrawPoint> points;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -423,10 +433,10 @@ class DrawingPainter extends CustomPainter {
 
 /// Secuenciador de ritmos musicales tipo tambor y maracas
 class MusicSequencer extends StatefulWidget {
+  const MusicSequencer(
+      {super.key, required this.onProgress, required this.onSuccess});
   final Function(int) onProgress;
   final Function(String) onSuccess;
-
-  const MusicSequencer({super.key, required this.onProgress, required this.onSuccess});
 
   @override
   State<MusicSequencer> createState() => _MusicSequencerState();
@@ -440,10 +450,30 @@ class _MusicSequencerState extends State<MusicSequencer> {
   int playCount = 0;
 
   final List<Map<String, dynamic>> instruments = [
-    {'name': 'Tambor', 'icon': Icons.notifications, 'color': IslaColors.sunOrange, 'emoji': '🥁'},
-    {'name': 'Maracas', 'icon': Icons.grain, 'color': IslaColors.palmGreen, 'emoji': '🎵'},
-    {'name': 'Campana', 'icon': Icons.notifications_active, 'color': IslaColors.sunYellow, 'emoji': '🔔'},
-    {'name': 'Concha', 'icon': Icons.surfing, 'color': IslaColors.oceanLight, 'emoji': '🐚'},
+    {
+      'name': 'Tambor',
+      'icon': Icons.notifications,
+      'color': IslaColors.sunOrange,
+      'emoji': '🥁'
+    },
+    {
+      'name': 'Maracas',
+      'icon': Icons.grain,
+      'color': IslaColors.palmGreen,
+      'emoji': '🎵'
+    },
+    {
+      'name': 'Campana',
+      'icon': Icons.notifications_active,
+      'color': IslaColors.sunYellow,
+      'emoji': '🔔'
+    },
+    {
+      'name': 'Concha',
+      'icon': Icons.surfing,
+      'color': IslaColors.oceanLight,
+      'emoji': '🐚'
+    },
   ];
 
   @override
@@ -484,7 +514,7 @@ class _MusicSequencerState extends State<MusicSequencer> {
 
   void _clearGrid() {
     setState(() {
-      for (var row in grid) {
+      for (final row in grid) {
         for (int i = 0; i < row.length; i++) {
           row[i] = false;
         }
@@ -542,7 +572,9 @@ class _MusicSequencerState extends State<MusicSequencer> {
                           child: Text(
                             '${beat + 1}',
                             style: TextStyle(
-                              color: currentBeat == beat ? IslaColors.white : IslaColors.grey,
+                              color: currentBeat == beat
+                                  ? IslaColors.white
+                                  : IslaColors.grey,
                               fontWeight: FontWeight.bold,
                               fontSize: 12,
                             ),
@@ -574,7 +606,8 @@ class _MusicSequencerState extends State<MusicSequencer> {
                 label: Text(isPlaying ? 'Reproduciendo...' : '¡Tocar!'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: IslaColors.palmGreen,
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 ),
               ),
               const SizedBox(width: 16),
@@ -622,7 +655,7 @@ class _MusicSequencerState extends State<MusicSequencer> {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: 80,
             child: Row(
               children: [
@@ -668,7 +701,8 @@ class _MusicSequencerState extends State<MusicSequencer> {
                       ),
                     ),
                     child: isActive
-                        ? const Icon(Icons.music_note, color: IslaColors.white, size: 16)
+                        ? const Icon(Icons.music_note,
+                            color: IslaColors.white, size: 16)
                         : null,
                   ),
                 );

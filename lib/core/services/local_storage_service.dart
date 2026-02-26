@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/models.dart';
-import '../providers/app_providers.dart';
 
 /// Servicio de persistencia local usando SharedPreferences
 /// Almacena el perfil del niño, configuración parental y progreso
@@ -35,7 +34,7 @@ class LocalStorageService {
     try {
       final jsonString = _prefs.getString(_profileKey);
       if (jsonString == null || jsonString.isEmpty) return null;
-      
+
       final json = jsonDecode(jsonString) as Map<String, dynamic>;
       return ChildProfile.fromJson(json);
     } catch (e) {
@@ -65,15 +64,17 @@ class LocalStorageService {
   static ParentalSettings loadParentalSettings() {
     try {
       final jsonString = _prefs.getString(_settingsKey);
-      if (jsonString == null || jsonString.isEmpty) return const ParentalSettings();
-      
+      if (jsonString == null || jsonString.isEmpty)
+        return const ParentalSettings();
+
       final json = jsonDecode(jsonString) as Map<String, dynamic>;
       return ParentalSettings(
         dailyTimeLimitMinutes: json['dailyTimeLimitMinutes'] as int? ?? 30,
         soundEnabled: json['soundEnabled'] as bool? ?? true,
         musicEnabled: json['musicEnabled'] as bool? ?? true,
         notificationsEnabled: json['notificationsEnabled'] as bool? ?? true,
-        allowedContacts: List<String>.from(json['allowedContacts'] as List? ?? []),
+        allowedContacts:
+            List<String>.from(json['allowedContacts'] as List? ?? []),
       );
     } catch (e) {
       // Manejar error de parsing
@@ -101,7 +102,8 @@ class LocalStorageService {
 
   /// Guardar sesión
   static Future<bool> saveLastSession() async {
-    return await _prefs.setString(_lastSessionKey, DateTime.now().toIso8601String());
+    return await _prefs.setString(
+        _lastSessionKey, DateTime.now().toIso8601String());
   }
 
   /// Cargar última sesión
@@ -120,11 +122,11 @@ class LocalStorageService {
   static bool isNewDay() {
     final lastSession = loadLastSession();
     if (lastSession == null) return true;
-    
+
     final now = DateTime.now();
     return lastSession.day != now.day ||
-           lastSession.month != now.month ||
-           lastSession.year != now.year;
+        lastSession.month != now.month ||
+        lastSession.year != now.year;
   }
 
   /// Guardar progreso de nivel
@@ -174,7 +176,7 @@ class LocalStorageService {
     final playTime = loadPlayTime();
     final badges = loadEarnedBadges();
     final lastSession = loadLastSession();
-    
+
     return {
       'profile': profile?.toJson(),
       'totalPlayTimeMinutes': playTime,

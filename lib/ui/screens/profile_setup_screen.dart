@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../core/theme/app_theme.dart';
+
 import '../../core/providers/app_providers.dart';
-import '../widgets/island_background.dart';
+import '../../core/theme/app_theme.dart';
 import '../widgets/big_button.dart';
+import '../widgets/island_background.dart';
 
 class ProfileSetupScreen extends ConsumerStatefulWidget {
   const ProfileSetupScreen({super.key});
@@ -69,7 +70,6 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(24),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
                 _buildHeader(),
@@ -97,7 +97,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
   Widget _buildHeader() {
     return Column(
       children: [
-        Icon(
+        const Icon(
           Icons.wb_sunny,
           size: 64,
           color: IslaColors.sunYellow,
@@ -150,7 +150,8 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                   color: _avatarColors[index],
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: isSelected ? IslaColors.sunYellow : Colors.transparent,
+                    color:
+                        isSelected ? IslaColors.sunYellow : Colors.transparent,
                     width: 4,
                   ),
                   boxShadow: isSelected
@@ -207,7 +208,8 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: const BorderSide(color: IslaColors.oceanBlue, width: 2),
+              borderSide:
+                  const BorderSide(color: IslaColors.oceanBlue, width: 2),
             ),
           ),
         ),
@@ -243,7 +245,9 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                     width: 80,
                     height: 80,
                     decoration: BoxDecoration(
-                      color: isSelected ? IslaColors.oceanBlue : IslaColors.greyLight,
+                      color: isSelected
+                          ? IslaColors.oceanBlue
+                          : IslaColors.greyLight,
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: Column(
@@ -251,16 +255,24 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                       children: [
                         Text(
                           '$age',
-                          style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                color: isSelected ? IslaColors.white : IslaColors.greyDark,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displaySmall
+                              ?.copyWith(
+                                color: isSelected
+                                    ? IslaColors.white
+                                    : IslaColors.greyDark,
                                 fontWeight: FontWeight.bold,
                               ),
                         ),
                         Text(
                           'años',
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: isSelected ? IslaColors.white.withOpacity(0.8) : IslaColors.grey,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: isSelected
+                                        ? IslaColors.white.withOpacity(0.8)
+                                        : IslaColors.grey,
+                                  ),
                         ),
                       ],
                     ),

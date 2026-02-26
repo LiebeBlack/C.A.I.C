@@ -1,10 +1,15 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'dart:math';
-import '../../core/theme/app_theme.dart';
+
+import '../../core/models/badge.dart';
+import '../../core/models/child_profile.dart';
+import '../../core/models/parental_settings.dart';
 import '../../core/providers/app_providers.dart';
+import '../../core/theme/app_theme.dart';
+import '../widgets/badge_card.dart';
 import '../widgets/island_background.dart';
-import '../widgets/progress_widgets.dart';
 
 /// Dashboard de Control Parental con bloqueo matemático
 /// Protege el acceso a configuraciones mediante operaciones simples
@@ -12,10 +17,12 @@ class ParentalDashboardScreen extends ConsumerStatefulWidget {
   const ParentalDashboardScreen({super.key});
 
   @override
-  ConsumerState<ParentalDashboardScreen> createState() => _ParentalDashboardScreenState();
+  ConsumerState<ParentalDashboardScreen> createState() =>
+      _ParentalDashboardScreenState();
 }
 
-class _ParentalDashboardScreenState extends ConsumerState<ParentalDashboardScreen> {
+class _ParentalDashboardScreenState
+    extends ConsumerState<ParentalDashboardScreen> {
   bool _isAuthenticated = false;
   int _num1 = 0;
   int _num2 = 0;
@@ -32,10 +39,10 @@ class _ParentalDashboardScreenState extends ConsumerState<ParentalDashboardScree
     final random = Random();
     _num1 = random.nextInt(10) + 1;
     _num2 = random.nextInt(10) + 1;
-    
+
     final operations = ['+', '-'];
     _operation = operations[random.nextInt(operations.length)];
-    
+
     if (_operation == '-' && _num1 < _num2) {
       final temp = _num1;
       _num1 = _num2;
@@ -98,7 +105,7 @@ class _ParentalDashboardScreenState extends ConsumerState<ParentalDashboardScree
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             Icons.lock,
             size: 80,
             color: IslaColors.oceanBlue,
@@ -183,7 +190,7 @@ class _ParentalDashboardScreenState extends ConsumerState<ParentalDashboardScree
     );
   }
 
-  Widget _buildDashboard(profile, ParentalSettings settings) {
+  Widget _buildDashboard(ChildProfile? profile, ParentalSettings settings) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -252,7 +259,7 @@ class _ParentalDashboardScreenState extends ConsumerState<ParentalDashboardScree
     );
   }
 
-  Widget _buildChildStats(profile) {
+  Widget _buildChildStats(ChildProfile? profile) {
     if (profile == null) {
       return const IslandCard(
         child: Text('No hay perfil activo'),
@@ -351,7 +358,9 @@ class _ParentalDashboardScreenState extends ConsumerState<ParentalDashboardScree
             divisions: 7,
             label: '${settings.dailyTimeLimitMinutes} min',
             onChanged: (value) {
-              ref.read(parentalSettingsProvider.notifier).updateTimeLimit(value.toInt());
+              ref
+                  .read(parentalSettingsProvider.notifier)
+                  .updateTimeLimit(value.toInt());
             },
           ),
           Center(
@@ -381,52 +390,48 @@ class _ParentalDashboardScreenState extends ConsumerState<ParentalDashboardScree
             title: const Text('Efectos de sonido'),
             subtitle: const Text('Sonidos de éxito y feedback'),
             value: settings.soundEnabled,
-            onChanged: (_) => ref.read(parentalSettingsProvider.notifier).toggleSound(),
-            activeColor: IslaColors.oceanBlue,
+            onChanged: (_) =>
+                ref.read(parentalSettingsProvider.notifier).toggleSound(),
+            activeThumbColor: IslaColors.oceanBlue,
           ),
           SwitchListTile(
             title: const Text('Música de fondo'),
             subtitle: const Text('Melodías tranquilas de la isla'),
             value: settings.musicEnabled,
-            onChanged: (_) => ref.read(parentalSettingsProvider.notifier).toggleMusic(),
-            activeColor: IslaColors.oceanBlue,
+            onChanged: (_) =>
+                ref.read(parentalSettingsProvider.notifier).toggleMusic(),
+            activeThumbColor: IslaColors.oceanBlue,
           ),
         ],
       ),
     );
   }
 
-  Widget _buildBadgesCard(profile) {
+  Widget _buildBadgesCard(ChildProfile? profile) {
+    final earnedIds = profile?.earnedBadges ?? [];
+
     return IslandCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Insignias Desbloqueadas',
+            'Insignias',
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
           ),
           const SizedBox(height: 16),
-          if ((profile?.earnedBadges as List<String>?)?.isEmpty ?? true)
-            Text(
-              'Aún no hay insignias desbloqueadas',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: IslaColors.grey,
-                  ),
-            )
-          else
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: (profile?.earnedBadges as List<String>? ?? [])
-                  .map((badgeId) => Chip(
-                        avatar: const Icon(Icons.star, size: 16),
-                        label: Text(badgeId),
-                        backgroundColor: IslaColors.sunYellow.withOpacity(0.3),
-                      ))
-                  .toList(),
-            ),
+          Wrap(
+            spacing: 12,
+            runSpacing: 16,
+            children: IslaBadges.allBadges.map((badge) {
+              return BadgeCard(
+                badge: badge,
+                isEarned: earnedIds.contains(badge.id),
+                size: 56,
+              );
+            }).toList(),
+          ),
         ],
       ),
     );

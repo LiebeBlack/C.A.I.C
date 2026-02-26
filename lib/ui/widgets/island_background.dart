@@ -4,21 +4,21 @@ import '../../core/theme/app_theme.dart';
 /// Fondo personalizado con elementos visuales de la Isla de Margarita
 /// Incluye gradientes de atardecer y elementos decorativos sutiles
 class IslandBackground extends StatelessWidget {
-  final Widget child;
-  final bool showDecorations;
-
   const IslandBackground({
     super.key,
     required this.child,
     this.showDecorations = true,
   });
+  final Widget child;
+  final bool showDecorations;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return DecoratedBox(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/backgrounds/bg_beach_tropical_day.jpg'),
+          image:
+              AssetImage('assets/images/backgrounds/bg_beach_tropical_day.jpg'),
           fit: BoxFit.cover,
         ),
       ),
@@ -111,11 +111,11 @@ class WavesPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
 
     final path = Path();
-    
+
     for (int i = 0; i < 3; i++) {
       final y = 20.0 + (i * 25);
       path.moveTo(0, y);
-      
+
       for (double x = 0; x <= size.width; x += 20) {
         path.lineTo(
           x,
@@ -123,7 +123,7 @@ class WavesPainter extends CustomPainter {
         );
       }
     }
-    
+
     canvas.drawPath(path, paint);
   }
 
@@ -133,11 +133,6 @@ class WavesPainter extends CustomPainter {
 
 /// Widget de tarjeta con estilo isleño
 class IslandCard extends StatelessWidget {
-  final Widget child;
-  final Color? color;
-  final EdgeInsets? padding;
-  final VoidCallback? onTap;
-
   const IslandCard({
     super.key,
     required this.child,
@@ -145,11 +140,15 @@ class IslandCard extends StatelessWidget {
     this.padding,
     this.onTap,
   });
+  final Widget child;
+  final Color? color;
+  final EdgeInsets? padding;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final cardColor = color ?? IslaColors.white;
-    
+
     Widget cardContent = Container(
       padding: padding ?? const EdgeInsets.all(20),
       decoration: BoxDecoration(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../core/providers/app_providers.dart';
+
 import '../../../core/models/badge.dart';
+import '../../../core/providers/app_providers.dart';
+import '../../../core/theme/app_theme.dart';
 import '../../widgets/island_background.dart';
-import '../../widgets/big_button.dart';
 import '../../widgets/progress_widgets.dart';
 
 /// Nivel 1: Mi Primer Encuentro
@@ -56,7 +56,9 @@ class _Level1ScreenState extends ConsumerState<Level1Screen> {
     });
 
     // Update global progress
-    ref.read(levelProgressProvider('level_1').notifier).setProgress(totalProgress);
+    ref
+        .read(levelProgressProvider('level_1').notifier)
+        .setProgress(totalProgress);
     ref.read(currentProfileProvider.notifier).addProgress('level_1', points);
   }
 
@@ -267,7 +269,8 @@ class _Level1ScreenState extends ConsumerState<Level1Screen> {
           const SizedBox(height: 32),
           GestureDetector(
             onVerticalDragEnd: (details) {
-              if (details.primaryVelocity != null && details.primaryVelocity! < 0) {
+              if (details.primaryVelocity != null &&
+                  details.primaryVelocity! < 0) {
                 _showSuccessFeedback('¡Excelente!');
                 _completeStep(25);
               }
@@ -305,7 +308,7 @@ class _Level1ScreenState extends ConsumerState<Level1Screen> {
 
   Widget _buildVolumeStep(Map<String, dynamic> step) {
     double volumeLevel = 0.5;
-    
+
     return Padding(
       padding: const EdgeInsets.all(24),
       child: StatefulBuilder(
@@ -359,7 +362,9 @@ class _Level1ScreenState extends ConsumerState<Level1Screen> {
                         ),
                         const SizedBox(width: 24),
                         Icon(
-                          volumeLevel > 0.5 ? Icons.volume_up : Icons.volume_down,
+                          volumeLevel > 0.5
+                              ? Icons.volume_up
+                              : Icons.volume_down,
                           size: 48,
                           color: IslaColors.palmGreen,
                         ),
@@ -374,7 +379,8 @@ class _Level1ScreenState extends ConsumerState<Level1Screen> {
                             });
                             if (volumeLevel >= 0.8) {
                               _showSuccessFeedback('¡Perfecto!');
-                              Future.delayed(const Duration(milliseconds: 500), () {
+                              Future.delayed(const Duration(milliseconds: 500),
+                                  () {
                                 _completeStep(25);
                               });
                             }
@@ -434,9 +440,9 @@ class _Level1ScreenState extends ConsumerState<Level1Screen> {
               crossAxisSpacing: 16,
               children: options.map((option) {
                 return _buildOptionCard(
-                  option['icon'] as IconData,
-                  option['label'] as String,
-                  option['correct'] as bool,
+                  option['icon']! as IconData,
+                  option['label']! as String,
+                  option['correct']! as bool,
                 );
               }).toList(),
             ),
@@ -466,7 +472,7 @@ class _Level1ScreenState extends ConsumerState<Level1Screen> {
           }
         },
         borderRadius: BorderRadius.circular(16),
-        child: Container(
+        child: DecoratedBox(
           decoration: BoxDecoration(
             color: IslaColors.white,
             borderRadius: BorderRadius.circular(16),
@@ -498,11 +504,6 @@ class _Level1ScreenState extends ConsumerState<Level1Screen> {
 
 // Widget auxiliar para botón animado con icono
 class AnimatedIconButton extends StatefulWidget {
-  final IconData icon;
-  final Color color;
-  final VoidCallback onPressed;
-  final double size;
-
   const AnimatedIconButton({
     super.key,
     required this.icon,
@@ -510,6 +511,10 @@ class AnimatedIconButton extends StatefulWidget {
     required this.onPressed,
     this.size = 80,
   });
+  final IconData icon;
+  final Color color;
+  final VoidCallback onPressed;
+  final double size;
 
   @override
   State<AnimatedIconButton> createState() => _AnimatedIconButtonState();
@@ -527,7 +532,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
       duration: const Duration(milliseconds: 150),
       vsync: this,
     );
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.9).animate(
+    _scaleAnimation = Tween<double>(begin: 1, end: 0.9).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
   }

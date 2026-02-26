@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../core/providers/app_providers.dart';
+
 import '../../../core/models/badge.dart';
+import '../../../core/providers/app_providers.dart';
+import '../../../core/theme/app_theme.dart';
 import '../../widgets/island_background.dart';
 import '../../widgets/progress_widgets.dart';
 
@@ -26,33 +27,93 @@ class _Level3ScreenState extends ConsumerState<Level3Screen> {
     {
       'scenario': 'Quieres ver videos de animales',
       'websites': [
-        {'name': 'VideosKids.com', 'icon': Icons.video_library, 'safe': true, 'shield': 'green'},
-        {'name': 'FreeMovies.xyz', 'icon': Icons.warning, 'safe': false, 'shield': 'red'},
-        {'name': 'AprendeJugando.edu', 'icon': Icons.school, 'safe': true, 'shield': 'green'},
+        {
+          'name': 'VideosKids.com',
+          'icon': Icons.video_library,
+          'safe': true,
+          'shield': 'green'
+        },
+        {
+          'name': 'FreeMovies.xyz',
+          'icon': Icons.warning,
+          'safe': false,
+          'shield': 'red'
+        },
+        {
+          'name': 'AprendeJugando.edu',
+          'icon': Icons.school,
+          'safe': true,
+          'shield': 'green'
+        },
       ],
     },
     {
       'scenario': 'Buscar información para tu tarea',
       'websites': [
-        {'name': 'WikipediaKids', 'icon': Icons.menu_book, 'safe': true, 'shield': 'green'},
-        {'name': 'DescargasRapidas.net', 'icon': Icons.download, 'safe': false, 'shield': 'red'},
-        {'name': 'WikiRespuestas', 'icon': Icons.help, 'safe': true, 'shield': 'green'},
+        {
+          'name': 'WikipediaKids',
+          'icon': Icons.menu_book,
+          'safe': true,
+          'shield': 'green'
+        },
+        {
+          'name': 'DescargasRapidas.net',
+          'icon': Icons.download,
+          'safe': false,
+          'shield': 'red'
+        },
+        {
+          'name': 'WikiRespuestas',
+          'icon': Icons.help,
+          'safe': true,
+          'shield': 'green'
+        },
       ],
     },
     {
       'scenario': 'Jugar juegos en línea',
       'websites': [
-        {'name': 'JuegosEducativos.gob', 'icon': Icons.games, 'safe': true, 'shield': 'green'},
-        {'name': 'JuegosGratisPopups', 'icon': Icons.ads_click, 'safe': false, 'shield': 'red'},
-        {'name': 'DiversiónSegura.app', 'icon': Icons.verified, 'safe': true, 'shield': 'green'},
+        {
+          'name': 'JuegosEducativos.gob',
+          'icon': Icons.games,
+          'safe': true,
+          'shield': 'green'
+        },
+        {
+          'name': 'JuegosGratisPopups',
+          'icon': Icons.ads_click,
+          'safe': false,
+          'shield': 'red'
+        },
+        {
+          'name': 'DiversiónSegura.app',
+          'icon': Icons.verified,
+          'safe': true,
+          'shield': 'green'
+        },
       ],
     },
     {
       'scenario': 'Hablar con amigos',
       'websites': [
-        {'name': 'ChatAmigos', 'icon': Icons.chat, 'safe': true, 'shield': 'green'},
-        {'name': 'EncuentraAmigosX', 'icon': Icons.person_search, 'safe': false, 'shield': 'red'},
-        {'name': 'ClubDeLectura', 'icon': Icons.book, 'safe': true, 'shield': 'green'},
+        {
+          'name': 'ChatAmigos',
+          'icon': Icons.chat,
+          'safe': true,
+          'shield': 'green'
+        },
+        {
+          'name': 'EncuentraAmigosX',
+          'icon': Icons.person_search,
+          'safe': false,
+          'shield': 'red'
+        },
+        {
+          'name': 'ClubDeLectura',
+          'icon': Icons.book,
+          'safe': true,
+          'shield': 'green'
+        },
       ],
     },
   ];
@@ -69,7 +130,9 @@ class _Level3ScreenState extends ConsumerState<Level3Screen> {
           _completeLevel();
         }
       });
-      ref.read(levelProgressProvider('level_3').notifier).setProgress(totalProgress);
+      ref
+          .read(levelProgressProvider('level_3').notifier)
+          .setProgress(totalProgress);
       ref.read(currentProfileProvider.notifier).addProgress('level_3', 25);
     } else {
       _showDangerFeedback(name);
@@ -80,21 +143,23 @@ class _Level3ScreenState extends ConsumerState<Level3Screen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Row(
+        title: const Row(
           children: [
-            const Icon(Icons.warning, color: IslaColors.error),
-            const SizedBox(width: 8),
+            Icon(Icons.warning, color: IslaColors.error),
+            SizedBox(width: 8),
             Text('¡Cuidado!', style: TextStyle(color: IslaColors.error)),
           ],
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.local_fire_department, size: 64, color: IslaColors.error),
+            const Icon(Icons.local_fire_department,
+                size: 64, color: IslaColors.error),
             const SizedBox(height: 16),
             Text('$siteName puede ser peligroso.'),
             const SizedBox(height: 8),
-            const Text('Los sitios inseguros pueden tener virus o personas malintencionadas.'),
+            const Text(
+                'Los sitios inseguros pueden tener virus o personas malintencionadas.'),
           ],
         ),
         actions: [
@@ -238,7 +303,8 @@ class _Level3ScreenState extends ConsumerState<Level3Screen> {
             ),
             child: Column(
               children: [
-                const Icon(Icons.search, size: 48, color: IslaColors.sunsetPurple),
+                const Icon(Icons.search,
+                    size: 48, color: IslaColors.sunsetPurple),
                 const SizedBox(height: 12),
                 Text(
                   'Escenario:',
@@ -306,8 +372,10 @@ class _Level3ScreenState extends ConsumerState<Level3Screen> {
     );
   }
 
-  Widget _buildWebsiteCard(String name, IconData icon, bool safe, String shieldColor) {
-    final shield = shieldColor == 'green' ? IslaColors.success : IslaColors.error;
+  Widget _buildWebsiteCard(
+      String name, IconData icon, bool safe, String shieldColor) {
+    final shield =
+        shieldColor == 'green' ? IslaColors.success : IslaColors.error;
     final isOctopus = !safe;
 
     return Material(
@@ -332,7 +400,9 @@ class _Level3ScreenState extends ConsumerState<Level3Screen> {
                 width: 60,
                 height: 60,
                 decoration: BoxDecoration(
-                  color: safe ? IslaColors.palmLight.withOpacity(0.3) : IslaColors.error.withOpacity(0.1),
+                  color: safe
+                      ? IslaColors.palmLight.withOpacity(0.3)
+                      : IslaColors.error.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Icon(
@@ -363,9 +433,10 @@ class _Level3ScreenState extends ConsumerState<Level3Screen> {
                         const SizedBox(width: 4),
                         Text(
                           safe ? 'Sitio verificado' : '¡Precaución!',
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: shield,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: shield,
+                                  ),
                         ),
                       ],
                     ),

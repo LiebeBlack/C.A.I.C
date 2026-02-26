@@ -3,7 +3,8 @@ import '../models/models.dart';
 import '../services/services.dart';
 
 /// Provider para el perfil del niño actual
-final currentProfileProvider = StateNotifierProvider<ProfileNotifier, ChildProfile?>((ref) {
+final currentProfileProvider =
+    StateNotifierProvider<ProfileNotifier, ChildProfile?>((ref) {
   final notifier = ProfileNotifier();
   notifier.loadSavedProfile();
   return notifier;
@@ -20,7 +21,8 @@ class ProfileNotifier extends StateNotifier<ChildProfile?> {
     }
   }
 
-  Future<void> createProfile(String name, int age, {String avatar = 'default'}) async {
+  Future<void> createProfile(String name, int age,
+      {String avatar = 'default'}) async {
     final profile = ChildProfile(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       name: name,
@@ -50,7 +52,8 @@ class ProfileNotifier extends StateNotifier<ChildProfile?> {
       final updated = state!.copyWith(levelProgress: newProgress);
       state = updated;
       await LocalStorageService.saveProfile(updated);
-      await LocalStorageService.saveLevelProgress(levelId, newProgress[levelId]!);
+      await LocalStorageService.saveLevelProgress(
+          levelId, newProgress[levelId]!);
     }
   }
 
@@ -90,48 +93,12 @@ class ProfileNotifier extends StateNotifier<ChildProfile?> {
 }
 
 /// Provider para la configuración parental con persistencia
-final parentalSettingsProvider = StateNotifierProvider<ParentalSettingsNotifier, ParentalSettings>((ref) {
+final parentalSettingsProvider =
+    StateNotifierProvider<ParentalSettingsNotifier, ParentalSettings>((ref) {
   final notifier = ParentalSettingsNotifier();
   notifier.loadSavedSettings();
   return notifier;
 });
-
-/// Configuración del control parental
-class ParentalSettings {
-  final int dailyTimeLimitMinutes;
-  final bool soundEnabled;
-  final bool musicEnabled;
-  final bool notificationsEnabled;
-  final List<String> allowedContacts;
-  final DateTime? lastAccess;
-
-  const ParentalSettings({
-    this.dailyTimeLimitMinutes = 30,
-    this.soundEnabled = true,
-    this.musicEnabled = true,
-    this.notificationsEnabled = true,
-    this.allowedContacts = const [],
-    this.lastAccess,
-  });
-
-  ParentalSettings copyWith({
-    int? dailyTimeLimitMinutes,
-    bool? soundEnabled,
-    bool? musicEnabled,
-    bool? notificationsEnabled,
-    List<String>? allowedContacts,
-    DateTime? lastAccess,
-  }) {
-    return ParentalSettings(
-      dailyTimeLimitMinutes: dailyTimeLimitMinutes ?? this.dailyTimeLimitMinutes,
-      soundEnabled: soundEnabled ?? this.soundEnabled,
-      musicEnabled: musicEnabled ?? this.musicEnabled,
-      notificationsEnabled: notificationsEnabled ?? this.notificationsEnabled,
-      allowedContacts: allowedContacts ?? this.allowedContacts,
-      lastAccess: lastAccess ?? this.lastAccess,
-    );
-  }
-}
 
 class ParentalSettingsNotifier extends StateNotifier<ParentalSettings> {
   ParentalSettingsNotifier() : super(const ParentalSettings());
@@ -167,7 +134,8 @@ class ParentalSettingsNotifier extends StateNotifier<ParentalSettings> {
   }
 
   Future<void> removeAllowedContact(String contact) async {
-    final newContacts = List<String>.from(state.allowedContacts)..remove(contact);
+    final newContacts = List<String>.from(state.allowedContacts)
+      ..remove(contact);
     final updated = state.copyWith(allowedContacts: newContacts);
     state = updated;
     await LocalStorageService.saveParentalSettings(updated);
@@ -175,20 +143,20 @@ class ParentalSettingsNotifier extends StateNotifier<ParentalSettings> {
 }
 
 /// Provider para el estado de la aplicación
-final appStateProvider = StateNotifierProvider<AppStateNotifier, AppState>((ref) {
+final appStateProvider =
+    StateNotifierProvider<AppStateNotifier, AppState>((ref) {
   return AppStateNotifier();
 });
 
 class AppState {
-  final bool isLoading;
-  final String? currentRoute;
-  final bool showCelebration;
-
   const AppState({
     this.isLoading = false,
     this.currentRoute,
     this.showCelebration = false,
   });
+  final bool isLoading;
+  final String? currentRoute;
+  final bool showCelebration;
 
   AppState copyWith({
     bool? isLoading,
@@ -223,13 +191,14 @@ class AppStateNotifier extends StateNotifier<AppState> {
 }
 
 /// Provider para tracking de progreso en niveles
-final levelProgressProvider = StateNotifierProvider.family<LevelProgressNotifier, int, String>(
+final levelProgressProvider =
+    StateNotifierProvider.family<LevelProgressNotifier, int, String>(
   (ref, levelId) => LevelProgressNotifier(levelId),
 );
 
 class LevelProgressNotifier extends StateNotifier<int> {
-  final String levelId;
   LevelProgressNotifier(this.levelId) : super(0);
+  final String levelId;
 
   void addPoints(int points) {
     state = (state + points).clamp(0, 100);

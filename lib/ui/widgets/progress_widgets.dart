@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/utils/color_utils.dart';
 
 /// Barra de progreso visual animada para niños
 /// Diseño colorido con feedback visual claro
 class IslandProgressBar extends StatelessWidget {
-  final int progress;
-  final int maxProgress;
-  final Color? fillColor;
-  final double height;
-  final bool showPercentage;
-  final String? label;
-
   const IslandProgressBar({
     super.key,
     required this.progress,
@@ -20,11 +14,17 @@ class IslandProgressBar extends StatelessWidget {
     this.showPercentage = true,
     this.label,
   });
+  final int progress;
+  final int maxProgress;
+  final Color? fillColor;
+  final double height;
+  final bool showPercentage;
+  final String? label;
 
   @override
   Widget build(BuildContext context) {
     final clampedProgress = progress.clamp(0, maxProgress);
-    final percentage = (clampedProgress / maxProgress);
+    final percentage = clampedProgress / maxProgress;
     final color = fillColor ?? IslaColors.oceanBlue;
 
     return Column(
@@ -62,10 +62,8 @@ class IslandProgressBar extends StatelessWidget {
                     gradient: LinearGradient(
                       colors: [
                         color,
-                        _lightenColor(color, 0.2),
+                        ColorUtils.lighten(color, 0.2),
                       ],
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
                     ),
                   ),
                 ),
@@ -74,7 +72,9 @@ class IslandProgressBar extends StatelessWidget {
                     child: Text(
                       '${(percentage * 100).toInt()}%',
                       style: TextStyle(
-                        color: percentage > 0.5 ? IslaColors.white : IslaColors.greyDark,
+                        color: percentage > 0.5
+                            ? IslaColors.white
+                            : IslaColors.greyDark,
                         fontWeight: FontWeight.bold,
                         fontSize: height * 0.5,
                       ),
@@ -87,20 +87,10 @@ class IslandProgressBar extends StatelessWidget {
       ],
     );
   }
-
-  Color _lightenColor(Color color, double amount) {
-    final hsl = HSLColor.fromColor(color);
-    return hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0)).toColor();
-  }
 }
 
 /// Indicador de pasos/progreso con puntos
 class StepIndicator extends StatelessWidget {
-  final int currentStep;
-  final int totalSteps;
-  final Color? activeColor;
-  final Color? inactiveColor;
-
   const StepIndicator({
     super.key,
     required this.currentStep,
@@ -108,6 +98,10 @@ class StepIndicator extends StatelessWidget {
     this.activeColor,
     this.inactiveColor,
   });
+  final int currentStep;
+  final int totalSteps;
+  final Color? activeColor;
+  final Color? inactiveColor;
 
   @override
   Widget build(BuildContext context) {
@@ -146,26 +140,25 @@ class StepIndicator extends StatelessWidget {
 
 /// Widget de celebración con confeti (placeholder para integración con confetti package)
 class CelebrationOverlay extends StatelessWidget {
-  final bool isVisible;
-  final String? message;
-  final VoidCallback? onComplete;
-
   const CelebrationOverlay({
     super.key,
     required this.isVisible,
     this.message,
     this.onComplete,
   });
+  final bool isVisible;
+  final String? message;
+  final VoidCallback? onComplete;
 
   @override
   Widget build(BuildContext context) {
     if (!isVisible) return const SizedBox.shrink();
 
-    return Container(
+    return ColoredBox(
       color: Colors.black.withOpacity(0.3),
       child: Center(
         child: TweenAnimationBuilder<double>(
-          tween: Tween(begin: 0.0, end: 1.0),
+          tween: Tween(begin: 0, end: 1),
           duration: const Duration(milliseconds: 500),
           builder: (context, value, child) {
             return Transform.scale(
@@ -186,7 +179,7 @@ class CelebrationOverlay extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.star,
                       size: 64,
                       color: IslaColors.sunYellow,
@@ -194,10 +187,11 @@ class CelebrationOverlay extends StatelessWidget {
                     const SizedBox(height: 16),
                     Text(
                       message ?? '¡Excelente!',
-                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                            color: IslaColors.oceanBlue,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      style:
+                          Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                color: IslaColors.oceanBlue,
+                                fontWeight: FontWeight.bold,
+                              ),
                     ),
                   ],
                 ),

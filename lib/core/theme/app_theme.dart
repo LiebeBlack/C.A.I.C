@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 /// Paleta de colores inspirada en la Isla de Margarita
@@ -9,29 +8,29 @@ class IslaColors {
   static const Color oceanBlue = Color(0xFF0066CC);
   static const Color oceanLight = Color(0xFF4DA6FF);
   static const Color oceanDark = Color(0xFF003D7A);
-  
+
   // Colores de arena y sol
   static const Color sand = Color(0xFFF4E4C1);
   static const Color sandLight = Color(0xFFFDF6E3);
   static const Color sunYellow = Color(0xFFFFD93D);
   static const Color sunOrange = Color(0xFFFFA500);
-  
+
   // Colores tropicales - Vegetación
   static const Color palmGreen = Color(0xFF2E7D32);
   static const Color palmLight = Color(0xFF66BB6A);
   static const Color palmDark = Color(0xFF1B5E20);
-  
+
   // Colores de atardecer margariteño
   static const Color sunsetPink = Color(0xFFFF6B9D);
   static const Color sunsetPurple = Color(0xFF9C27B0);
   static const Color sunsetCoral = Color(0xFFFF7F50);
-  
+
   // Colores funcionales
   static const Color success = Color(0xFF4CAF50);
   static const Color warning = Color(0xFFFFC107);
   static const Color error = Color(0xFFE53935);
   static const Color info = Color(0xFF2196F3);
-  
+
   // Neutros
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF212121);
@@ -117,7 +116,6 @@ class IslaThemes {
       brightness: Brightness.light,
       colorScheme: ColorScheme.fromSeed(
         seedColor: IslaColors.oceanBlue,
-        brightness: Brightness.light,
         primary: IslaColors.oceanBlue,
         secondary: IslaColors.sunYellow,
         tertiary: IslaColors.palmGreen,
@@ -187,7 +185,8 @@ class IslaThemes {
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(color: IslaColors.oceanBlue, width: 2),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       ),
     );
   }

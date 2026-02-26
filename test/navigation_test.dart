@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isla_digital/main.dart';
-import 'package:isla_digital/ui/screens/home_screen.dart';
-import 'package:isla_digital/ui/screens/level_select_screen.dart';
-import 'package:isla_digital/ui/screens/profile_setup_screen.dart';
-import 'package:isla_digital/ui/screens/parental_dashboard_screen.dart';
 import 'package:isla_digital/ui/levels/level1/level1_screen.dart';
 import 'package:isla_digital/ui/levels/level2/level2_screen.dart';
 import 'package:isla_digital/ui/levels/level3/level3_screen.dart';
 import 'package:isla_digital/ui/levels/level4/level4_screen.dart';
 import 'package:isla_digital/ui/levels/level5/level5_screen.dart';
+import 'package:isla_digital/ui/screens/home_screen.dart';
+import 'package:isla_digital/ui/screens/level_select_screen.dart';
+import 'package:isla_digital/ui/screens/parental_dashboard_screen.dart';
+import 'package:isla_digital/ui/screens/profile_setup_screen.dart';
 
 /// Tests de navegación para verificar el flujo entre pantallas y niveles
 void main() {
   group('Navigation Flow Tests', () {
-    
-    testWidgets('App initializes with ProfileSetup when no profile exists', (WidgetTester tester) async {
+    testWidgets('App initializes with ProfileSetup when no profile exists',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
         const ProviderScope(
           child: IslaDigitalApp(),
@@ -28,7 +28,8 @@ void main() {
       expect(find.byType(ProfileSetupScreen), findsOneWidget);
     });
 
-    testWidgets('Can navigate from Profile to Home after creating profile', (WidgetTester tester) async {
+    testWidgets('Can navigate from Profile to Home after creating profile',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
         const ProviderScope(
           child: IslaDigitalApp(),
@@ -45,10 +46,11 @@ void main() {
       expect(find.byType(HomeScreen), findsOneWidget);
     });
 
-    testWidgets('Home screen navigation to Level Select works', (WidgetTester tester) async {
+    testWidgets('Home screen navigation to Level Select works',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: HomeScreen(),
           ),
         ),
@@ -66,8 +68,8 @@ void main() {
 
     testWidgets('Level Select shows all 5 levels', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: LevelSelectScreen(),
           ),
         ),
@@ -82,10 +84,11 @@ void main() {
       expect(find.text('Pequeño Artista'), findsOneWidget);
     });
 
-    testWidgets('Can navigate to Level 1 from Level Select', (WidgetTester tester) async {
+    testWidgets('Can navigate to Level 1 from Level Select',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: LevelSelectScreen(),
           ),
         ),
@@ -100,10 +103,11 @@ void main() {
       expect(find.byType(Level1Screen), findsOneWidget);
     });
 
-    testWidgets('Level 1 has 4 steps and progress indicator', (WidgetTester tester) async {
+    testWidgets('Level 1 has 4 steps and progress indicator',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: Level1Screen(),
           ),
         ),
@@ -113,15 +117,16 @@ void main() {
       // Verificar elementos de UI
       expect(find.text('Mi Primer Encuentro'), findsOneWidget);
       expect(find.text('Progreso del Nivel'), findsOneWidget);
-      
+
       // Verificar indicador de pasos (StepIndicator tiene 4 pasos)
       expect(find.byType(StepIndicator), findsOneWidget);
     });
 
-    testWidgets('Can navigate to Level 2 from Level Select', (WidgetTester tester) async {
+    testWidgets('Can navigate to Level 2 from Level Select',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: LevelSelectScreen(),
           ),
         ),
@@ -136,10 +141,11 @@ void main() {
       expect(find.byType(Level2Screen), findsOneWidget);
     });
 
-    testWidgets('Level 2 has chat and emergency call activities', (WidgetTester tester) async {
+    testWidgets('Level 2 has chat and emergency call activities',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: Level2Screen(),
           ),
         ),
@@ -151,10 +157,11 @@ void main() {
       expect(find.text('Chat Seguro'), findsOneWidget);
     });
 
-    testWidgets('Can navigate to Level 3 from Level Select', (WidgetTester tester) async {
+    testWidgets('Can navigate to Level 3 from Level Select',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: LevelSelectScreen(),
           ),
         ),
@@ -169,10 +176,11 @@ void main() {
       expect(find.byType(Level3Screen), findsOneWidget);
     });
 
-    testWidgets('Level 3 has detective game elements', (WidgetTester tester) async {
+    testWidgets('Level 3 has detective game elements',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: Level3Screen(),
           ),
         ),
@@ -184,10 +192,11 @@ void main() {
       expect(find.text('Escenario:'), findsOneWidget);
     });
 
-    testWidgets('Can navigate to Level 4 from Level Select', (WidgetTester tester) async {
+    testWidgets('Can navigate to Level 4 from Level Select',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: LevelSelectScreen(),
           ),
         ),
@@ -202,10 +211,11 @@ void main() {
       expect(find.byType(Level4Screen), findsOneWidget);
     });
 
-    testWidgets('Level 4 has calculator, calendar and camera tabs', (WidgetTester tester) async {
+    testWidgets('Level 4 has calculator, calendar and camera tabs',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: Level4Screen(),
           ),
         ),
@@ -218,10 +228,11 @@ void main() {
       expect(find.text('Misión Cámara'), findsOneWidget);
     });
 
-    testWidgets('Can navigate to Level 5 from Level Select', (WidgetTester tester) async {
+    testWidgets('Can navigate to Level 5 from Level Select',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: LevelSelectScreen(),
           ),
         ),
@@ -236,10 +247,11 @@ void main() {
       expect(find.byType(Level5Screen), findsOneWidget);
     });
 
-    testWidgets('Level 5 has drawing and music tabs', (WidgetTester tester) async {
+    testWidgets('Level 5 has drawing and music tabs',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: Level5Screen(),
           ),
         ),
@@ -251,10 +263,11 @@ void main() {
       expect(find.text('Música'), findsOneWidget);
     });
 
-    testWidgets('Parental Dashboard requires math authentication', (WidgetTester tester) async {
+    testWidgets('Parental Dashboard requires math authentication',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: ParentalDashboardScreen(),
           ),
         ),
@@ -267,10 +280,11 @@ void main() {
       expect(find.byType(TextField), findsOneWidget); // Campo de respuesta
     });
 
-    testWidgets('Back navigation works from all levels', (WidgetTester tester) async {
+    testWidgets('Back navigation works from all levels',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: Level1Screen(),
           ),
         ),
@@ -285,10 +299,11 @@ void main() {
       expect(find.byType(Level1Screen), findsNothing);
     });
 
-    testWidgets('Level selection respects unlock status', (WidgetTester tester) async {
+    testWidgets('Level selection respects unlock status',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: LevelSelectScreen(),
           ),
         ),
@@ -307,10 +322,11 @@ void main() {
       expect(lockIcons, findsWidgets);
     });
 
-    testWidgets('Progress bars are visible in unlocked levels', (WidgetTester tester) async {
+    testWidgets('Progress bars are visible in unlocked levels',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: LevelSelectScreen(),
           ),
         ),
@@ -324,10 +340,11 @@ void main() {
   });
 
   group('Error Handling Tests', () {
-    testWidgets('Invalid level ID shows error message', (WidgetTester tester) async {
+    testWidgets('Invalid level ID shows error message',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: LevelSelectScreen(),
           ),
         ),
@@ -339,10 +356,11 @@ void main() {
       // Esto se maneja internamente en _navigateToLevel
     });
 
-    testWidgets('Profile creation validates empty name', (WidgetTester tester) async {
+    testWidgets('Profile creation validates empty name',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: const ProviderScope(
+        const MaterialApp(
+          home: ProviderScope(
             child: ProfileSetupScreen(),
           ),
         ),
@@ -359,11 +377,12 @@ void main() {
   });
 
   group('Responsive Navigation Tests', () {
-    testWidgets('Navigation works on small screens', (WidgetTester tester) async {
+    testWidgets('Navigation works on small screens',
+        (WidgetTester tester) async {
       // Configurar tamaño de pantalla pequeño (teléfono)
       tester.binding.window.physicalSizeTestValue = const Size(400, 800);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      
+
       await tester.pumpWidget(
         const ProviderScope(
           child: IslaDigitalApp(),
@@ -378,11 +397,12 @@ void main() {
       addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
     });
 
-    testWidgets('Navigation works on tablet/desktop screens', (WidgetTester tester) async {
+    testWidgets('Navigation works on tablet/desktop screens',
+        (WidgetTester tester) async {
       // Configurar tamaño de pantalla grande
       tester.binding.window.physicalSizeTestValue = const Size(1200, 800);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      
+
       await tester.pumpWidget(
         const ProviderScope(
           child: IslaDigitalApp(),
@@ -401,11 +421,6 @@ void main() {
 
 /// Mock de BigButton para los tests
 class BigButton extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final Color color;
-  final VoidCallback onPressed;
-
   const BigButton({
     super.key,
     required this.icon,
@@ -413,6 +428,10 @@ class BigButton extends StatelessWidget {
     required this.color,
     required this.onPressed,
   });
+  final IconData icon;
+  final String label;
+  final Color color;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -427,16 +446,15 @@ class BigButton extends StatelessWidget {
 
 /// Mock de IslandProgressBar para los tests
 class IslandProgressBar extends StatelessWidget {
-  final int progress;
-  final String? label;
-  final Color? fillColor;
-
   const IslandProgressBar({
     super.key,
     required this.progress,
     this.label,
     this.fillColor,
   });
+  final int progress;
+  final String? label;
+  final Color? fillColor;
 
   @override
   Widget build(BuildContext context) {
@@ -455,16 +473,15 @@ class IslandProgressBar extends StatelessWidget {
 
 /// Mock de StepIndicator para los tests
 class StepIndicator extends StatelessWidget {
-  final int currentStep;
-  final int totalSteps;
-  final Color? activeColor;
-
   const StepIndicator({
     super.key,
     required this.currentStep,
     required this.totalSteps,
     this.activeColor,
   });
+  final int currentStep;
+  final int totalSteps;
+  final Color? activeColor;
 
   @override
   Widget build(BuildContext context) {
@@ -477,7 +494,9 @@ class StepIndicator extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 4),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: index <= currentStep ? (activeColor ?? Colors.green) : Colors.grey,
+            color: index <= currentStep
+                ? (activeColor ?? Colors.green)
+                : Colors.grey,
           ),
         );
       }),

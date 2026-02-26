@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/utils/color_utils.dart';
 
 /// Botón grande y accesible para niños pequeños
 /// Diseño con alto contraste, iconos claros y feedback táctil
 class BigButton extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final Color color;
-  final VoidCallback onPressed;
-  final double? width;
-  final double? height;
-
   const BigButton({
     super.key,
     required this.icon,
@@ -20,6 +14,12 @@ class BigButton extends StatelessWidget {
     this.width,
     this.height,
   });
+  final IconData icon;
+  final String label;
+  final Color color;
+  final VoidCallback onPressed;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +32,10 @@ class BigButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         child: Container(
           width: width ?? double.infinity,
-          height: height ?? 64,
+          height: height ?? 50,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [color, _darkenColor(color, 0.1)],
+              colors: [color, ColorUtils.darken(color, 0.1)],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -46,13 +46,13 @@ class BigButton extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                size: 28,
+                size: 24,
                 color: IslaColors.white,
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: 12),
               Text(
                 label,
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: IslaColors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -63,21 +63,10 @@ class BigButton extends StatelessWidget {
       ),
     );
   }
-
-  Color _darkenColor(Color color, double amount) {
-    final hsl = HSLColor.fromColor(color);
-    return hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0)).toColor();
-  }
 }
 
 /// Botón circular para acciones secundarias
 class CircleActionButton extends StatelessWidget {
-  final IconData icon;
-  final Color color;
-  final VoidCallback onPressed;
-  final String? label;
-  final double size;
-
   const CircleActionButton({
     super.key,
     required this.icon,
@@ -86,6 +75,11 @@ class CircleActionButton extends StatelessWidget {
     this.label,
     this.size = 58,
   });
+  final IconData icon;
+  final Color color;
+  final VoidCallback onPressed;
+  final String? label;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +98,7 @@ class CircleActionButton extends StatelessWidget {
               height: size,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [color, _darkenColor(color, 0.15)],
+                  colors: [color, ColorUtils.darken(color, 0.15)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -132,20 +126,10 @@ class CircleActionButton extends StatelessWidget {
       ],
     );
   }
-
-  Color _darkenColor(Color color, double amount) {
-    final hsl = HSLColor.fromColor(color);
-    return hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0)).toColor();
-  }
 }
 
 /// Botón con icono y animación de escala al tocar
 class AnimatedIconButton extends StatefulWidget {
-  final IconData icon;
-  final Color color;
-  final VoidCallback onPressed;
-  final double size;
-
   const AnimatedIconButton({
     super.key,
     required this.icon,
@@ -153,6 +137,10 @@ class AnimatedIconButton extends StatefulWidget {
     required this.onPressed,
     this.size = 64,
   });
+  final IconData icon;
+  final Color color;
+  final VoidCallback onPressed;
+  final double size;
 
   @override
   State<AnimatedIconButton> createState() => _AnimatedIconButtonState();
@@ -170,7 +158,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
       duration: const Duration(milliseconds: 150),
       vsync: this,
     );
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.9).animate(
+    _scaleAnimation = Tween<double>(begin: 1, end: 0.9).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
   }

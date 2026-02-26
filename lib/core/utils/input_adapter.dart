@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 class InputAdapter {
   /// Detectar si estamos en una plataforma de escritorio
   static bool get isDesktop {
-    return const bool.fromEnvironment('dart.vm.product', defaultValue: false) == false
+    return const bool.fromEnvironment('dart.vm.product') == false
         ? false
         : true;
   }
 
   /// Configuración de scroll para mouse (con rueda) y touch
   static ScrollBehavior getScrollBehavior() {
-    return MaterialScrollBehavior().copyWith(
+    return const MaterialScrollBehavior().copyWith(
       // Soportar drag con mouse en desktop
       dragDevices: {
         PointerDeviceKind.touch,
@@ -34,7 +34,7 @@ class InputAdapter {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: onTap,
-        child: Container(
+        child: ColoredBox(
           color: hoverColor,
           child: child,
         ),
@@ -45,12 +45,6 @@ class InputAdapter {
 
 /// Widget de botón adaptable que funciona bien con mouse y touch
 class AdaptiveButton extends StatefulWidget {
-  final Widget child;
-  final VoidCallback onPressed;
-  final Color? backgroundColor;
-  final EdgeInsets padding;
-  final BorderRadius? borderRadius;
-
   const AdaptiveButton({
     super.key,
     required this.child,
@@ -59,6 +53,11 @@ class AdaptiveButton extends StatefulWidget {
     this.padding = const EdgeInsets.all(16),
     this.borderRadius,
   });
+  final Widget child;
+  final VoidCallback onPressed;
+  final Color? backgroundColor;
+  final EdgeInsets padding;
+  final BorderRadius? borderRadius;
 
   @override
   State<AdaptiveButton> createState() => _AdaptiveButtonState();
@@ -96,10 +95,10 @@ class _AdaptiveButtonState extends State<AdaptiveButton> {
                     ),
                   ]
                 : [],
-            transform: _isPressed
-                ? Matrix4.identity()..scale(0.98)
-                : Matrix4.identity(),
           ),
+          transform: _isPressed
+              ? (Matrix4.identity()..scale(0.98))
+              : Matrix4.identity(),
           child: widget.child,
         ),
       ),
@@ -109,12 +108,6 @@ class _AdaptiveButtonState extends State<AdaptiveButton> {
 
 /// Widget de área de juego que soporta tanto touch como mouse
 class AdaptiveGameArea extends StatelessWidget {
-  final Widget child;
-  final Function(Offset position) onTap;
-  final Function(Offset position)? onPanStart;
-  final Function(Offset position)? onPanUpdate;
-  final Function()? onPanEnd;
-
   const AdaptiveGameArea({
     super.key,
     required this.child,
@@ -123,6 +116,11 @@ class AdaptiveGameArea extends StatelessWidget {
     this.onPanUpdate,
     this.onPanEnd,
   });
+  final Widget child;
+  final Function(Offset position) onTap;
+  final Function(Offset position)? onPanStart;
+  final Function(Offset position)? onPanUpdate;
+  final Function()? onPanEnd;
 
   @override
   Widget build(BuildContext context) {
