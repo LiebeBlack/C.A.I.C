@@ -1,6 +1,0 @@
-/build/
-.dart_tool/
-.packages
-.pub-cache/
-.pub/
-ios/Flutter/.last_build_id

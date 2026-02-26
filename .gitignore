@@ -1,0 +1,75 @@
+# -----------------------------------------------------------------------
+# Flutter / Dart - Configuración para evitar archivos pesados
+# -----------------------------------------------------------------------
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+
+# Evitar la carpeta build completa (CAUSA DE TU ERROR DE 140MB)
+build/
+
+# -----------------------------------------------------------------------
+# Android - Específicos de compilación y firmas
+# -----------------------------------------------------------------------
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+**/android/app/build/
+android/local.properties
+android/key.properties
+*.keystore
+*.jks
+*.so
+*.apk
+*.aab
+
+# -----------------------------------------------------------------------
+# iOS - Por si llegas a compilar para Apple
+# -----------------------------------------------------------------------
+**/ios/Pods/
+**/ios/.generated/
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/ServiceDefinitions.json
+**/ios/Runner/GeneratedPluginRegistrant.[mh]
+**/*.moved-aside
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+
+# -----------------------------------------------------------------------
+# Linux (Tu Sistema Operativo actual)
+# -----------------------------------------------------------------------
+linux/flutter/ephemeral/
+linux/flutter/generated_config/
+
+# Archivos temporales de Linux/Desktop
+.directory
+*~
+*.swp
+*.lock
+
+# -----------------------------------------------------------------------
+# Editores de Código (VS Code, IntelliJ, Android Studio)
+# -----------------------------------------------------------------------
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.settings/
+.classpath
+
+# -----------------------------------------------------------------------
+# Otros (Logs y archivos del sistema)
+# -----------------------------------------------------------------------
+*.log
+.DS_Store
+node_modules/
