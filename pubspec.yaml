@@ -1,0 +1,97 @@
+name: isla_digital
+description: Aplicación educativa para niños de 4-6 años de Nueva Esparta, Venezuela
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  
+  # Estado
+  flutter_riverpod: ^2.4.9
+  
+  # UI/UX
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.0.9
+  lottie: ^2.7.0
+  
+  # Audio
+  audioplayers: ^5.2.1
+  
+  # Almacenamiento local
+  shared_preferences: ^2.2.2
+  
+  # Utilidades
+  intl: 0.20.2
+  confetti: ^0.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  
+  # Configuración multiplataforma
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.6
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/images/backgrounds/
+    - assets/audio/
+    - assets/audio/music/
+    - assets/animations/
+    - assets/animations/characters/
+    - assets/animations/ui/
+    - assets/icons/
+
+  fonts:
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/Nunito-Regular.ttf
+        - asset: assets/fonts/Nunito-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Nunito-ExtraBold.ttf
+          weight: 800
+
+# Configuración de iconos para todas las plataformas
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: false
+  image_path: "assets/icons/app_icon.png"
+  min_sdk_android: 21
+  adaptive_icon_background: "#0066CC"
+  adaptive_icon_foreground: "assets/icons/app_icon_foreground.png"
+  windows:
+    generate: true
+    image_path: "assets/icons/app_icon.png"
+    icon_size: 256
+  linux:
+    generate: true
+    image_path: "assets/icons/app_icon.png"
+
+# Configuración de pantalla de carga temática
+flutter_native_splash:
+  color: "#FDF6E3"
+  image: assets/images/splash_logo.png
+  branding: assets/images/splash_branding.png
+  branding_mode: bottom
+  
+  android_12:
+    color: "#FDF6E3"
+    image: assets/images/splash_logo.png
+    branding: assets/images/splash_branding.png
+  
+  android: true
+  ios: false
+  web: false
+  
+  android_gravity: center
+  fullscreen: true
