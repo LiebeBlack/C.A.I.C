@@ -2,11 +2,10 @@
 
 ![Banner de Isla Digital](https://raw.githubusercontent.com/LiebeBlack/I.S.D.I/refs/heads/main/assets/images/Picsart_26-03-03_02-28-31-521.png) > **Transformando el tiempo de pantalla en aprendizaje constructivo.** 
 
-[![Flutter Version](https://img.shields.io/badge/Flutter-%3E%3D%203.0.0-02569B?logo=flutter&style=for-the-badge)](https://flutter.dev)
-[![Dart Version](https://img.shields.io/badge/Dart-%3E%3D%203.0.0-0175C2?logo=dart&style=for-the-badge)](https://dart.dev)
-[![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20Windows%20%7C%20Linux-0066CC?style=for-the-badge)](#compilación)
-[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
-
+[![Flutter Version](https://img.shields.io/badge/Flutter-3.29.0-6A1B9A?logo=flutter&logoColor=white&style=for-the-badge)](https://flutter.dev)
+[![Dart Version](https://img.shields.io/badge/Dart-3.7.0-6A1B9A?logo=dart&logoColor=white&style=for-the-badge)](https://dart.dev)
+[![Platform](https://img.shields.io/badge/Platform-Android-6A1B9A?logo=android&logoColor=white&style=for-the-badge)](#compilación)
+[![License](https://img.shields.io/badge/License-GPL--3.0-6A1B9A?logo=gnu&logoColor=white&style=for-the-badge)](LICENSE)
 ---
 
 ## 🌟 Visión General
