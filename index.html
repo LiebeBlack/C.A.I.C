@@ -1,10 +1,193 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Mi Web en GitHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I.S.D.I | Isla Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #8a2be2;
+            --dark-bg: #0b0214;
+            --glass: rgba(255, 255, 255, 0.05);
+            --accent: #c084fc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Fondo Animado Vibrante */
+        .bg-gradient {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a0b2e 0%, #05010d 100%);
+            z-index: -1;
+        }
+
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--primary-purple);
+            filter: blur(80px);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(20%, 20%); }
+        }
+
+        /* Contenedor Principal */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 0;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .badge {
+            background: rgba(138, 43, 226, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--primary-purple);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 20px 0;
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #b0a3c4;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Grid de Pilares */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-purple);
+        }
+
+        .card h3 { color: var(--accent); margin-bottom: 15px; }
+
+        /* Botón Estilo Gaming */
+        .cta {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: var(--primary-purple);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+            transition: 0.3s;
+        }
+
+        .cta:hover {
+            box-shadow: 0 0 30px var(--primary-purple);
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid var(--glass);
+            padding: 40px 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
-    <h1>¡Hola Mundo! Mi web está viva 🚀</h1>
-    <p>Este es mi primer sitio alojado en GitHub Pages.</p>
+
+    <div class="bg-gradient"></div>
+    <div class="blob"></div>
+
+    <div class="container">
+        <header>
+            <span class="badge">Proyecto de Universidad • v0.7.3</span>
+            <h1>I.S.D.I</h1>
+            <p class="tagline">"Transformando el tiempo de pantalla en aprendizaje constructivo."</p>
+            <a href="https://github.com/LiebeBlack/I.S.D.I" class="cta">Explorar Repositorio</a>
+        </header>
+
+        <section id="vision">
+            <div class="card" style="text-align: center;">
+                <h2>Ecosistema Pedagógico</h2>
+                <p>Basado en el modelo CPA (Concreto-Pictórico-Abstracto) y gamificación, traducimos tecnología compleja en metáforas visuales intuitivas.</p>
+            </div>
+        </section>
+
+        <div class="grid">
+            <div class="card">
+                <h3>🎮 Interfaz Adaptativa</h3>
+                <p>Navegación 100% iconográfica diseñada para pre-lectores con hitboxes optimizados.</p>
+            </div>
+            <div class="card">
+                <h3>🛡️ Ciudadanía Digital</h3>
+                <p>Módulos de simulación segura y criterios de navegación web responsable.</p>
+            </div>
+            <div class="card">
+                <h3>🐚 Identidad Local</h3>
+                <p>Inspirada en la Isla de Margarita, fortaleciendo el sentido de pertenencia y cultura.</p>
+            </div>
+            <div class="card">
+                <h3>📊 Dashboard Parental</h3>
+                <p>Control total sobre el tiempo de uso y reportes detallados de progreso.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Desarrollado por <strong>LiebeBlack</strong> bajo licencia GPL-3.0</p>
+            <p>98.7% Dart • 2026</p>
+        </footer>
+    </div>
+
 </body>
 </html>
