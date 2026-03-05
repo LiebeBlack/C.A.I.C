@@ -11,9 +11,12 @@
 
 ### Pilares del Proyecto
 
-* **🎮 Interfaz Adaptativa**: Diseñada para pre-lectores con hitboxes de **80x80px** y navegación 100% iconográfica.
+* **🎮 Interfaz Adaptativa**: Diseñada para pre-lectores con hitboxes de **80x80px** y navegación iconográfica.
+* 
 * **🛡️ Ciudadanía Digital**: Módulos de simulación de chat seguro, protocolos de emergencia y criterios de navegación web.
+* 
 * **🐚 Identidad Local**: Estética inspirada en la iconografía, colores y ritmos de la Isla de Margarita, fortaleciendo el sentido de pertenencia.
+* 
 * **📊 Dashboard Parental**: Control total sobre el tiempo de uso, reportes de progreso y gestión de contenidos.
 
 ---
