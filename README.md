@@ -1,5 +1,5 @@
 ![Banner de Isla Digital](https://raw.githubusercontent.com/LiebeBlack/I.S.D.I/refs/heads/main/assets/images/Picsart_26-03-03_02-28-31-521.png) > 
-**Transformando el tiempo de pantalla en aprendizaje constructivo.** 
+**Transformando el tiempo de pantalla en aprendizaje.** 
 
 [**🌍 Sitio Web Oficial**](https://liebeblack.github.io/I.S.D.I/) 
 
