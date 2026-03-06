@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I.S.D.I | Isla Digital </title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8a2be2;
+            --accent: #c084fc;
+            --bg-dark: #05010d;
+            --bg-card: rgba(15, 5, 30, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.09);
+            --text-main: #ffffff;
+            --text-dim: #a0a0c0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.85;
+            text-align: center;
+        }
+
+        /* FONDO DINÁMICO ULTRA FLUIDO AL DESPLAZARSE */
+        .glow-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 22% 28%, rgba(138, 43, 226, 0.21) 0%, transparent 50%),
+                radial-gradient(circle at 78% 72%, rgba(192, 132, 252, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 48% 12%, rgba(138, 43, 226, 0.09) 0%, transparent 58%);
+            animation: meshPulse 32s ease infinite alternate;
+            will-change: transform;
+        }
+
+        @keyframes meshPulse {
+            0%   { opacity: 0.94; transform: scale(1) rotate(0deg); }
+            100% { opacity: 1; transform: scale(1.055) rotate(1.2deg); }
+        }
+
+        /* ANIMACIONES PREMIUM ULTRA SUAVES */
+        .reveal {
+            opacity: 0;
+            transform: translateY(70px) scale(0.95);
+            transition: all 1.25s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .bento-card {
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .bento-card:hover {
+            transform: translateY(-16px);
+            box-shadow: 0 35px 80px rgba(138, 43, 226, 0.22);
+            border-color: var(--accent);
+        }
+
+        /* SECCIONES COMPACTAS Y ELEGANTES */
+        .section-container {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            margin-bottom: 58px;
+        }
+        .section-title h2 {
+            font-size: clamp(2.15rem, 6.2vw, 3.25rem);
+            background: linear-gradient(90deg, var(--text-main), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: -1.1px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(305px, 1fr));
+            gap: 28px;
+            max-width: 1160px;
+            margin: 0 auto;
+        }
+
+        .bento-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 46px 34px;
+            backdrop-filter: blur(18px);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 285px;
+        }
+
+        .bento-card h3 {
+            font-size: 1.48rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .bento-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: all 0.5s ease;
+            transform: translateX(-50%);
+        }
+
+        .bento-card:hover h3::after {
+            width: 48px;
+        }
+
+        /* EXPANSIÓN MÁS ELEGANTE Y PROFUNDA */
+        .card-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+        }
+        .card-inner {
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-18px);
+            transition: all 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+            text-align: center;
+            font-size: 0.975rem;
+            color: var(--text-dim);
+            line-height: 1.85;
+        }
+        .bento-card.expanded .card-content { grid-template-rows: 1fr; }
+        .bento-card.expanded .card-inner {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .bento-card.expanded h3 {
+            color: var(--accent);
+        }
+
+        /* STATS REFINADOS */
+        .stats-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 46px;
+            padding: 72px 20px;
+            background: rgba(255,255,255,0.008);
+            margin: 52px 0;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .stat-item h4 {
+            font-size: clamp(2rem, 5.4vw, 2.75rem);
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .cta-main {
+            padding: 17px 48px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 38px rgba(138, 43, 226, 0.4);
+            font-size: 1.05rem;
+        }
+        .cta-main:hover {
+            transform: scale(1.065);
+            box-shadow: 0 0 70px var(--accent);
+        }
+
+        footer {
+            padding: 98px 20px 62px;
+            background: linear-gradient(to top, #000000, transparent);
+            font-size: 0.94rem;
+            opacity: 0.78;
+        }
+
+        /* RESPONSIVE ULTRA COMPACTO Y ELEGANTE */
+        @media (max-width: 768px) {
+            .grid-container { gap: 22px; grid-template-columns: 1fr; }
+            .bento-card { padding: 38px 26px; min-height: auto; }
+            .stats-bar { gap: 32px; padding: 58px 20px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: clamp(3.1rem, 10.8vw, 6.2rem); }
+            .bento-card { padding: 34px 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-mesh" id="glowMesh"></div>
+
+    <header style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 20px; background: radial-gradient(circle at bottom, rgba(138, 43, 226, 0.11), transparent 78%); text-align: center;">
+        <span style="background: rgba(138, 43, 226, 0.22); padding: 10px 26px; border-radius: 50px; font-size: 0.8rem; letter-spacing: 3.5px; text-transform: uppercase; border: 1px solid var(--primary); margin-bottom: 22px; color: var(--accent); animation: badgeFloat 4.8s ease infinite;">
+            En Desarrollo... 
+        </span>
+        <h1 style="font-size: clamp(3.7rem, 11.8vw, 8.5rem); font-weight: 800; letter-spacing: -3.8px; background: linear-gradient(180deg, #fff, #b0a0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px; line-height: 1;">
+            I.S.D.I
+        </h1>
+        <p style="font-size: clamp(1.06rem, 3.9vw, 1.42rem); color: var(--text-dim); max-width: 730px; font-weight: 300; margin: 0 auto 44px;">
+            Transformando el tiempo de pantalla en aprendizaje constructivo.<br>
+            Un ecosistema pedagógico basado en el modelo CPA y la identidad cultural de la Isla de Margarita.
+        </p>
+        <a href="#vision" class="cta-main">EXPLORAR LA ISLA DIGITAL</a>
+    </header>
+
+    <section class="stats-bar">
+    <div class="stat-item"><h4 class="stat-number" data-target="92.2">0</h4><p>% Dart</p></div>
+    <div class="stat-item"><h4 class="stat-number" data-target="4">0</h4><p>Releases</p></div>
+    <div class="stat-item"><h4 class="stat-number" data-target="87">0</h4><p>% Iconográfico</p></div>
+    <div class="stat-item"><h4 class="stat-number" data-target="1">0</h4><p>Desarrollador</p></div>
+</section>
+
+    <!-- VISIÓN -->
+    <div style="padding: 98px 0; background: linear-gradient(168deg, var(--bg-dark) 40%, #0b041b 42%, var(--bg-dark) 44%);">
+        <section id="vision" class="section-container">
+            <div class="section-title reveal">
+                <h2>Nuestra Visión</h2>
+            </div>
+            <div class="grid-container">
+
+                <div class="bento-card reveal interactive-card">
+                    <h3>Aprendizaje Cognitivo</h3>
+                    <div class="card-content">
+                        <div class="card-inner">
+                            El modelo Bruner (Concreto-Pictórico-Abstracto) es el fundamento de toda la plataforma. El niño primero experimenta de forma tangible, luego visualiza el concepto y finalmente lo representa. Esta progresión asegura una comprensión profunda, estructurada y duradera, eliminando la frustración típica de la enseñanza tradicional.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card reveal interactive-card" style="background: linear-gradient(45deg, var(--bg-card), rgba(138, 43, 226, 0.12));">
+                    <h3>Gamificación Real</h3>
+                    <div class="card-content">
+                        <div class="card-inner">
+                            Cada avance desbloquea habilidades concretas de Ciudadanía Digital: gestión segura de información, protocolos de emergencia y navegación responsable. No se trata de puntos decorativos, sino de competencias reales que preparan al niño para un mundo digital seguro y ético.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card reveal interactive-card">
+                    <h3>Entorno Sandbox Seguro</h3>
+                    <div class="card-content">
+                        <div class="card-inner">
+                            Un laboratorio completamente aislado donde el error forma parte del proceso de aprendizaje. El niño puede experimentar libremente sin riesgos externos ni exposición a internet, convirtiendo cada intento fallido en una oportunidad de crecimiento.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card reveal interactive-card">
+                    <h3>Analítica Parental Avanzada</h3>
+                    <div class="card-content">
+                        <div class="card-inner">
+                            Reportes que identifican fortalezas tempranas en lógica, creatividad y resolución de problemas. Los padres obtienen control total sobre el tiempo de uso y recomendaciones educativas personalizadas para cada etapa del desarrollo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PILARES -->
+    <section id="pilares" class="section-container" style="padding: 98px 20px;">
+        <div class="section-title reveal">
+            <h2>Pilares del Proyecto</h2>
+        </div>
+        <div class="grid-container">
+
+            <div class="bento-card reveal interactive-card">
+                <h3>Interfaz Iconográfica</h3>
+                <div class="card-content">
+                    <div class="card-inner">
+                        Diseñada específicamente para pre-lectores con elementos visuales grandes y navegación intuitiva. Cualquier niño puede explorar y aprender sin necesidad de leer texto, haciendo la plataforma verdaderamente inclusiva desde los primeros años.
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card reveal interactive-card">
+                <h3>Identidad Cultural Margariteña</h3>
+                <div class="card-content">
+                    <div class="card-inner">
+                        La estética y las metáforas están inspiradas en los colores del Caribe, los ritmos locales y la identidad de la Isla de Margarita. La tecnología deja de ser algo distante para convertirse en una extensión natural de nuestra cultura y orgullo regional.
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card reveal interactive-card">
+                <h3>Ciudadanía Digital Responsable</h3>
+                <div class="card-content">
+                    <div class="card-inner">
+                        Módulos integrados de simulación real que enseñan desde los 5 años cómo proteger datos, reconocer riesgos en línea y actuar con responsabilidad. Formamos ciudadanos digitales conscientes y preparados para el futuro.
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card reveal interactive-card">
+                <h3>Dashboard Parental Inteligente</h3>
+                <div class="card-content">
+                    <div class="card-inner">
+                        Control completo: límites de tiempo, reportes detallados de progreso, gestión de contenidos y sugerencias educativas adaptadas al desarrollo individual de cada niño.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARQUITECTURA Y REPOSITORIO -->
+    <section style="padding: 98px 0; background: rgba(10, 3, 25, 0.58);">
+        <section id="repositorio" class="section-container">
+            <div class="section-title reveal">
+                <h2>Sobre el Repositorio y la Arquitectura</h2>
+            </div>
+            <div class="grid-container">
+
+                <div class="bento-card reveal interactive-card">
+                    <h3>Clean Architecture</h3>
+                    <div class="card-content">
+                        <div class="card-inner">
+                            Implementación profesional con separación estricta de capas. Esto facilita el testing exhaustivo, el mantenimiento a largo plazo y la escalabilidad futura del proyecto. Un código limpio, modular y preparado para crecer con la comunidad educativa.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card reveal interactive-card">
+                    <h3>Desarrollado en Dart y Flutter</h3>
+                    <div class="card-content">
+                        <div class="card-inner">
+                            92,2% del código está escrito en Dart, permitiendo rendimiento nativo en Android e iOS. Optimizado para dispositivos de gama media y baja, ideal para su uso en escuelas públicas y familias venezolanas.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card reveal interactive-card">
+                    <h3>Estado Actual del Proyecto</h3>
+                    <div class="card-content">
+                        <div class="card-inner">
+                            Versión estable V0.7.3 con cuatro releases públicas. Código completamente abierto bajo licencia GPL-3.0. Últimas mejoras enfocadas en modularidad, rendimiento y experiencia de usuario en dispositivos móviles.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card reveal interactive-card">
+                    <h3>Repositorio Abierto en GitHub</h3>
+                    <div class="card-content">
+                        <div class="card-inner">
+                            Todo el código fuente está disponible públicamente para que estudiantes, docentes y desarrolladores puedan revisar, contribuir y adaptar la plataforma. Un proyecto universitario con vocación de impacto real en la educación venezolana.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- FILOSOFÍA -->
+    <section id="filosofia" class="section-container" style="padding: 98px 20px;">
+        <div class="bento-card reveal" style="max-width: 940px; margin: 0 auto; border-color: var(--primary); cursor: default; padding: 68px 46px;">
+            <h3 style="font-size: clamp(1.78rem, 4.9vw, 2.62rem); color: var(--accent); margin-bottom: 32px;">Filosofía Margariteña</h3>
+            <p style="font-size: 1.1rem; color: var(--text-dim); max-width: 780px; margin: 0 auto; line-height: 1.88;">
+                I.S.D.I nace con la misión de tropicalizar la educación tecnológica. Utilizamos los colores, ritmos y símbolos de nuestra Isla de Margarita para que los niños no perciban el proyecto como algo ajeno o importado, sino como una herramienta propia, cercana y llena de identidad cultural. La tecnología se convierte así en una extensión natural de quienes somos.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section-container" style="padding: 88px 20px; text-align: center;">
+        <a href="https://github.com/LiebeBlack/I.S.D.I" target="_blank" class="cta-main">
+            EXPLORAR EL REPOSITORIO EN GITHUB
+        </a>
+        <p style="margin-top: 42px; color: var(--text-dim); font-size: 0.96rem;">LiebeBlack © 2026 • Proyecto Universitario • Licencia GPL-3.0</p>
+    </section>
+
+    <footer>
+        <p>Trazando una ruta sana y segura para la educación en la Venezuela Digital</p>
+    </footer>
+
+    <script>
+        // SCROLL REVEAL PREMIUM
+        function reveal() {
+            document.querySelectorAll('.reveal').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 110) el.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        // FONDO AÚN MÁS DINÁMICO AL DESPLAZARSE
+        const mesh = document.getElementById('glowMesh');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const intensity = Math.min(1.09, 1 + scrollY * 0.000085);
+            mesh.style.transform = `translateY(${scrollY * 0.042}px) scale(${intensity})`;
+        });
+
+        // ANIMACIÓN DE NÚMEROS EN STATS
+        function animateNumbers() {
+            document.querySelectorAll('.stat-number').forEach(num => {
+                const target = parseFloat(num.getAttribute('data-target'));
+                let count = 0;
+                const increment = target / 72;
+                const timer = setInterval(() => {
+                    count += increment;
+                    if (count >= target) {
+                        count = target;
+                        clearInterval(timer);
+                    }
+                    num.textContent = Number.isInteger(target) ? Math.floor(count) : count.toFixed(1);
+                }, 32);
+            });
+        }
+        const statsObserver = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting) {
+                animateNumbers();
+                statsObserver.disconnect();
+            }
+        }, { threshold: 0.65 });
+        statsObserver.observe(document.querySelector('.stats-bar'));
+
+        // EXPANSIÓN DE TARJETAS
+        document.querySelectorAll('.interactive-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('expanded');
+            });
+        });
+    </script>
+</body>
+</html>

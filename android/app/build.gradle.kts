@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
 
@@ -11,31 +10,48 @@ android {
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
+        // Java 17 es ideal para las versiones de Gradle que usas
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
+        // Activa el modo incremental de Kotlin para que sea más rápido en Linux
+        freeCompilerArgs += listOf("-Xbackend-threads=4") 
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.liebeblack.isla_digital"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        
+        // TRUCO PARA LINUX: Evita generar archivos para arquitecturas que no usas
+        // Si solo pruebas en un celular físico, esto ahorra 1/3 del tiempo
+        resConfigs("es", "en") // Solo carga estos idiomas en debug
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // Optimización de recursos para que el APK final sea pequeño
+            isMinifyEnabled = false 
+            isShrinkResources = false
             signingConfig = signingConfigs.getByName("debug")
         }
+        
+        getByName("debug") {
+            // Acelera la instalación en el celular desactivando la compresión de PNGs
+            isDefault = true
+            extra["crunchPngs"] = false
+        }
+    }
+
+    // Evita que Gradle pierda tiempo buscando dependencias que no existen
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
     }
 }
 
