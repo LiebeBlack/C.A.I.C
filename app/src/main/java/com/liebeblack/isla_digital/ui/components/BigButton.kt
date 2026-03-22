@@ -20,6 +20,7 @@ import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -81,7 +82,7 @@ fun BigButton(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(height.dp)
-                    .offset(y = -shadowHeight)
+                    .offset { IntOffset(0, -shadowHeight.roundToPx()) }
                     .clip(RoundedCornerShape(24.dp))
                     .background(
                         brush = Brush.verticalGradient(

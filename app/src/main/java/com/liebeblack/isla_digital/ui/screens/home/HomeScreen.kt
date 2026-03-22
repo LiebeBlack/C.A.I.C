@@ -102,7 +102,12 @@ private fun AdaptiveTopBar(name: String, badges: Int, phase: DigitalPhase, onPro
                     Spacer(Modifier.width(12.dp))
                     Column(Modifier.weight(1f)) {
                         Text(
-                            text = when (phase) { DigitalPhase.SENSORIAL -> "¡HOLA!"; DigitalPhase.CREATIVE -> "Hey!"; DigitalPhase.PROFESSIONAL -> "Bienvenido" },
+                            text = when (phase) { 
+                                DigitalPhase.SENSORIAL -> "¡HOLA!"
+                                DigitalPhase.CREATIVE -> "Hey!"
+                                DigitalPhase.PROFESSIONAL -> "Bienvenido"
+                                DigitalPhase.INNOVATOR -> "Saludos"
+                            },
                             style = MaterialTheme.typography.labelSmall.copy(color = colors.onBackground.copy(alpha = 0.6f))
                         )
                         Text(name.uppercase(), style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold, color = colors.onBackground), maxLines = 1, overflow = TextOverflow.Ellipsis)
@@ -130,12 +135,14 @@ private fun AdaptiveWelcomeHero(phase: DigitalPhase) {
     val icon = when (phase) {
         DigitalPhase.SENSORIAL -> Icons.Rounded.Park
         DigitalPhase.CREATIVE -> Icons.Rounded.Palette
-        DigitalPhase.PROFESSIONAL -> Icons.Rounded.RocketLaunch
+        DigitalPhase.PROFESSIONAL -> Icons.Rounded.Work
+        DigitalPhase.INNOVATOR -> Icons.Rounded.RocketLaunch
     }
     val subtitle = when (phase) {
         DigitalPhase.SENSORIAL -> "¡TU AVENTURA COMIENZA AQUÍ!"
         DigitalPhase.CREATIVE -> "CREA, APRENDE, CONECTA"
         DigitalPhase.PROFESSIONAL -> "TU FUTURO DIGITAL"
+        DigitalPhase.INNOVATOR -> "LIDERAZGO Y FUTURO"
     }
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -151,8 +158,8 @@ private fun QuickStatsRow(profile: ChildProfile?) {
     val colors = IslaAdaptiveTheme.colors
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
         QuickStat("Nivel", "${profile.currentLevel}", Icons.AutoMirrored.Rounded.TrendingUp)
-        QuickStat("Medallas", "${profile.earnedBadges.size}", Icons.AutoMirrored.Rounded.Star)
-        QuickStat("Tiempo", "${profile.totalPlayTimeMinutes}m", Icons.AutoMirrored.Rounded.Timer)
+        QuickStat("Medallas", "${profile.earnedBadges.size}", Icons.Rounded.Star)
+        QuickStat("Tiempo", "${profile.totalPlayTimeMinutes}m", Icons.Rounded.Timer)
     }
 }
 
@@ -177,10 +184,20 @@ private fun MainActionsGrid(
 ) {
     val colors = IslaAdaptiveTheme.colors
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        BigButton(icon = Icons.Rounded.PlayArrow, label = when (phase) { DigitalPhase.SENSORIAL -> "JUGAR"; DigitalPhase.CREATIVE -> "EXPLORAR"; DigitalPhase.PROFESSIONAL -> "INICIAR" }, color = colors.primary, onClick = onLevels)
+        BigButton(
+            icon = Icons.Rounded.PlayArrow, 
+            label = when (phase) { 
+                DigitalPhase.SENSORIAL -> "JUGAR"
+                DigitalPhase.CREATIVE -> "EXPLORAR"
+                DigitalPhase.PROFESSIONAL -> "INICIAR"
+                DigitalPhase.INNOVATOR -> "LIDERAR"
+            }, 
+            color = colors.primary, 
+            onClick = onLevels
+        )
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             BigButton(icon = Icons.Rounded.AccountTree, label = "HABILIDADES", color = colors.secondary, onClick = onSkillTree, modifier = Modifier.weight(1f))
-            BigButton(icon = Icons.Rounded.MenuBook, label = "LECCIONES", color = colors.accent, onClick = onLessons, modifier = Modifier.weight(1f))
+            BigButton(icon = Icons.AutoMirrored.Rounded.MenuBook, label = "LECCIONES", color = colors.accent, onClick = onLessons, modifier = Modifier.weight(1f))
         }
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             BigButton(icon = Icons.Rounded.EmojiEvents, label = "CERTIFICADOS", color = colors.success, onClick = onCerts, modifier = Modifier.weight(1f))

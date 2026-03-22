@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.liebeblack.isla_digital.domain.model.DigitalPhase
 import com.liebeblack.isla_digital.ui.components.PhaseIndicator
-import com.liebeblack.isla_digital.ui.theme.IslaAdaptiveTheme
+import com.liebeblack.isla_digital.ui.theme.PhaseColorPalette
 import com.liebeblack.isla_digital.ui.theme.PhaseColors
 
 /**
@@ -131,7 +131,7 @@ fun OnboardingScreen(
 private fun StepIndicator(
     currentStep: Int,
     totalSteps: Int,
-    phaseColors: com.liebeblack.isla_digital.ui.theme.PhaseColorPalette
+    phaseColors: PhaseColorPalette
 ) {
     Row(
         modifier = Modifier
@@ -157,7 +157,7 @@ private fun StepIndicator(
 }
 
 @Composable
-private fun WelcomeStep(phaseColors: com.liebeblack.isla_digital.ui.theme.PhaseColorPalette) {
+private fun WelcomeStep(phaseColors: PhaseColorPalette) {
     val infiniteTransition = rememberInfiniteTransition(label = "welcome")
     val scale by infiniteTransition.animateFloat(
         initialValue = 0.95f,
@@ -208,7 +208,7 @@ private fun WelcomeStep(phaseColors: com.liebeblack.isla_digital.ui.theme.PhaseC
 private fun NameStep(
     name: String,
     onNameChange: (String) -> Unit,
-    phaseColors: com.liebeblack.isla_digital.ui.theme.PhaseColorPalette
+    phaseColors: PhaseColorPalette
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -252,7 +252,7 @@ private fun AgeStep(
     age: Int,
     phase: DigitalPhase,
     onAgeChange: (Int) -> Unit,
-    phaseColors: com.liebeblack.isla_digital.ui.theme.PhaseColorPalette
+    phaseColors: PhaseColorPalette
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -306,7 +306,7 @@ private fun AgeStep(
 private fun AvatarStep(
     selectedAvatar: String,
     onAvatarSelect: (String) -> Unit,
-    phaseColors: com.liebeblack.isla_digital.ui.theme.PhaseColorPalette
+    phaseColors: PhaseColorPalette
 ) {
     val avatars = listOf(
         "avatar_explorer" to Icons.Rounded.Explore,
@@ -377,7 +377,7 @@ private fun NavigationButtons(
     onNext: () -> Unit,
     onBack: () -> Unit,
     onComplete: () -> Unit,
-    phaseColors: com.liebeblack.isla_digital.ui.theme.PhaseColorPalette
+    phaseColors: PhaseColorPalette
 ) {
     Row(
         modifier = Modifier

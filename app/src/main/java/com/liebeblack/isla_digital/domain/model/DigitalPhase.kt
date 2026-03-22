@@ -30,13 +30,20 @@ enum class DigitalPhase(
         ageRange = 15..20,
         description = "IA aplicada, identidad profesional, finanzas y productividad avanzada",
         emoji = "💼"
+    ),
+    INNOVATOR(
+        displayName = "Liderazgo e Innovación",
+        ageRange = 21..99,
+        description = "Emprendimiento digital, arquitectura de sistemas y ética global",
+        emoji = "🚀"
     );
 
     companion object {
         fun fromAge(age: Int): DigitalPhase = when {
             age <= 7  -> SENSORIAL
             age <= 14 -> CREATIVE
-            else      -> PROFESSIONAL
+            age <= 20 -> PROFESSIONAL
+            else      -> INNOVATOR
         }
     }
 }

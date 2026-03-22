@@ -3,6 +3,7 @@ package com.liebeblack.isla_digital.ui.screens.main
 import androidx.compose.animation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.MenuBook
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -30,7 +31,7 @@ fun MainScreen(
     val navItems = listOf(
         BottomNavItem(Screen.Home.route, "Inicio", Icons.Rounded.Home),
         BottomNavItem(Screen.SkillTree.route, "Habilidades", Icons.Rounded.AccountTree),
-        BottomNavItem(Screen.Lessons.route, "Lecciones", Icons.Rounded.MenuBook),
+        BottomNavItem(Screen.Lessons.route, "Lecciones", Icons.AutoMirrored.Rounded.MenuBook),
         BottomNavItem(Screen.Profile.route, "Perfil", Icons.Rounded.Person)
     )
 

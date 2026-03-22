@@ -307,10 +307,20 @@ object PhaseTypography {
         buttonHeight = 48f,
         cardPadding = 12f
     )
+    
+    /**
+     * Tipografía para la fase Innovador (21+ años).
+     * Enfoque: Liderazgo, claridad y arquitectura.
+     */
+    val Innovator = Professional.copy(
+        borderRadius = 4f,
+        buttonHeight = 52f
+    )
 
     fun forPhase(phase: DigitalPhase): PhaseTypographyConfig = when (phase) {
         DigitalPhase.SENSORIAL -> Sensorial
         DigitalPhase.CREATIVE -> Creative
         DigitalPhase.PROFESSIONAL -> Professional
+        DigitalPhase.INNOVATOR -> Innovator
     }
 }

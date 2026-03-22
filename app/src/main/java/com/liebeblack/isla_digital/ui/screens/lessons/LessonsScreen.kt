@@ -160,4 +160,9 @@ private fun getLessonsForPhase(phase: DigitalPhase): List<LessonModule> = when (
         LessonModule("p_08", "Líder de Proyectos", "Gestión ágil de equipos", Icons.Rounded.Dashboard, phase, 6, estimatedMinutes = 30),
         LessonModule("p_10", "Fortaleza Digital", "2FA, biometría y seguridad total", Icons.Rounded.VerifiedUser, phase, 5, estimatedMinutes = 25)
     )
+    DigitalPhase.INNOVATOR -> listOf(
+        LessonModule("i_01", "Design Thinking", "Metodología para resolver problemas complejos", Icons.Rounded.Lightbulb, phase, 5, estimatedMinutes = 30),
+        LessonModule("i_02", "Prototipado Lab", "Crea tu primer producto digital mínimo", Icons.Rounded.Construction, phase, 6, estimatedMinutes = 45),
+        LessonModule("i_03", "Liderazgo 4.0", "Gestión de equipos en la era digital", Icons.Rounded.Groups, phase, 4, estimatedMinutes = 30)
+    )
 }

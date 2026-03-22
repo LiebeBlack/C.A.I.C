@@ -282,4 +282,9 @@ fun getLevelsForPhase(phase: DigitalPhase): List<Level> = when (phase) {
         Level(307, "Visionario de Blockchain", "Explora la nueva economía de la confianza digital", Icons.Rounded.CurrencyBitcoin, 22, requiredSkillId = "fin_03", difficulty = 3),
         Level(308, "Automatizador Supremo", "Crea flujos de trabajo inteligentes que trabajen por ti", Icons.Rounded.AutoFixHigh, 25, requiredSkillId = "prod_04", difficulty = 3)
     )
+    DigitalPhase.INNOVATOR -> listOf(
+        Level(401, "El Canvas del Innovador", "Diseña tu primer modelo de negocio digital", Icons.Rounded.Draw, 1, requiredSkillId = "inn_01", difficulty = 2),
+        Level(402, "Arquitecto de Nubes", "Diseña una infraestructura escalable y segura", Icons.Rounded.CloudDone, 5, requiredSkillId = "inn_02", difficulty = 3),
+        Level(403, "Liderazgo de Impacto", "Gestiona una crisis digital con ética y empatía", Icons.Rounded.AutoGraph, 10, requiredSkillId = "inn_03", difficulty = 3)
+    )
 }

@@ -145,6 +145,39 @@ object PhaseColors {
         isDark = true
     )
 
+    val Innovator = PhaseColorPalette(
+        primary = Color(0xFFFF8C00),           // Atardecer Naranja
+        primaryVariant = Color(0xFFE67E22),     // Calabaza
+        secondary = Color(0xFF9B59B6),          // Amatista
+        secondaryVariant = Color(0xFF8E44AD),
+        accent = Color(0xFFF1C40F),             // Girasol
+        background = Color(0xFF17202A),         // Azul Ebano
+        backgroundGradientStart = Color(0xFF1C2833),
+        backgroundGradientEnd = Color(0xFF212F3C),
+        surface = Color(0xFF1C2833),            // Gunmetal
+        surfaceVariant = Color(0xFF283747),
+        onPrimary = Color.White,
+        onSecondary = Color.White,
+        onBackground = Color(0xFFFDFEFE),
+        onSurface = Color(0xFFFDFEFE),
+        error = Color(0xFFE74C3C),
+        success = Color(0xFF2ECC71),
+        warning = Color(0xFFF39C12),
+        info = Color(0xFF3498DB),
+        cardBorder = Color(0xFF2C3E50),
+        divider = Color(0xFF34495E),
+        shimmer = Color(0xFFFF8C00),
+        glassOverlay = Color(0xFF1C2833).copy(alpha = 0.9f),
+        glassBorder = Color(0xFF34495E).copy(alpha = 0.6f),
+        navBarBackground = Color(0xFF17202A),
+        navBarSelected = Color(0xFFFF8C00),
+        navBarUnselected = Color(0xFF95A5A6),
+        progressTrack = Color(0xFF2C3E50),
+        progressFill = Color(0xFFFF8C00),
+        badgeGlow = Color(0xFFF1C40F),
+        isDark = true
+    )
+
     /**
      * Obtiene la paleta de colores correspondiente a la fase.
      */
@@ -152,5 +185,6 @@ object PhaseColors {
         DigitalPhase.SENSORIAL -> Sensorial
         DigitalPhase.CREATIVE -> Creative
         DigitalPhase.PROFESSIONAL -> Professional
+        DigitalPhase.INNOVATOR -> Innovator
     }
 }

@@ -17,7 +17,9 @@ enum class SkillCategory(val displayName: String, val icon: String) {
     PRODUCTIVITY("Productividad", "dashboard"),
     COLLABORATION("Colaboración Digital", "groups"),
     DATA_LITERACY("Cultura de Datos", "bar_chart"),
-    WELLBEING("Bienestar Digital", "self_improvement")
+    WELLBEING("Bienestar Digital", "self_improvement"),
+    INNOVATION("Innovación y Futuro", "rocket_launch"),
+    ETHICS("Ética y Filosofía Digital", "balance")
 }
 
 /**
@@ -99,5 +101,12 @@ object SkillTreeData {
         add(SkillNode("prod_04", "Automatización", "No-code y automatización de procesos", SkillCategory.PRODUCTIVITY, DigitalPhase.PROFESSIONAL, 150, tier = 5, prerequisiteIds = listOf("prod_02")))
         add(SkillNode("ai_04", "Prompt Engineering", "Optimización de consultas para modelos de lenguaje", SkillCategory.AI_TECH, DigitalPhase.PROFESSIONAL, 130, tier = 5, prerequisiteIds = listOf("ai_02")))
         add(SkillNode("dat_02", "Visualización Avanzada", "Storytelling con datos", SkillCategory.DATA_LITERACY, DigitalPhase.PROFESSIONAL, 140, tier = 5, prerequisiteIds = listOf("dat_01")))
+
+        // === FASE INNOVADOR (21+ años) - Enfoque: Liderazgo y Arquitectura ===
+        add(SkillNode("inn_01", "Ideación y Prototipado", "Creación de productos digitales desde cero", SkillCategory.INNOVATION, DigitalPhase.INNOVATOR, 160, tier = 1))
+        add(SkillNode("inn_02", "Arquitectura de Sistemas", "Diseño de soluciones escalables", SkillCategory.INNOVATION, DigitalPhase.INNOVATOR, 180, tier = 2, prerequisiteIds = listOf("inn_01")))
+        add(SkillNode("eth_01", "Filosofía del Algoritmo", "Impacto social de la IA", SkillCategory.ETHICS, DigitalPhase.INNOVATOR, 150, tier = 1))
+        add(SkillNode("inn_03", "Liderazgo Distribuido", "Gestión de equipos remotos y globales", SkillCategory.COLLABORATION, DigitalPhase.INNOVATOR, 170, tier = 3))
+        add(SkillNode("inn_04", "Economía de la Innovación", "Modelos de negocio disruptivos", SkillCategory.DIGITAL_FINANCE, DigitalPhase.INNOVATOR, 190, tier = 4, prerequisiteIds = listOf("inn_02")))
     }
 }

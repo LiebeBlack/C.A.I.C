@@ -9,6 +9,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Face
 import androidx.compose.material.icons.rounded.Palette
+import androidx.compose.material.icons.rounded.RocketLaunch
 import androidx.compose.material.icons.rounded.Work
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -40,6 +41,7 @@ fun PhaseIndicator(
         DigitalPhase.SENSORIAL -> Icons.Rounded.Face
         DigitalPhase.CREATIVE -> Icons.Rounded.Palette
         DigitalPhase.PROFESSIONAL -> Icons.Rounded.Work
+        DigitalPhase.INNOVATOR -> Icons.Rounded.RocketLaunch
     }
 
     val gradientColors = listOf(colors.primary, colors.secondary)

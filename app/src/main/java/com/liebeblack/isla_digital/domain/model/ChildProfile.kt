@@ -45,8 +45,26 @@ data class ChildProfile(
 
     // === Personalización ===
     val themeOverride: String? = null,
-    val preferredLanguage: String = "es"
+    val preferredLanguage: String = "es",
+
+    // === Logros y Misiones ===
+    val achievements: List<String> = emptyList(),
+    val activeQuests: List<String> = emptyList()
 ) {
+    /**
+     * Progreso calculado por categorías para la UI.
+     */
+    val logicProgress: Int get() = calculateCategoryProgress(SkillCategory.PROGRAMMING)
+    val creativityProgress: Int get() = calculateCategoryProgress(SkillCategory.CONTENT_CREATION)
+    val problemSolvingProgress: Int get() = calculateCategoryProgress(SkillCategory.SECURITY)
+
+    private fun calculateCategoryProgress(category: SkillCategory): Int {
+        val allSkills = SkillTreeData.getDefaultSkillTree().filter { it.category == category }
+        if (allSkills.isEmpty()) return 0
+        val completedInCategory = completedSkillIds.count { id -> allSkills.any { it.id == id } }
+        return (completedInCategory.toFloat() / allSkills.size * 100).toInt()
+    }
+
     init {
         require(age in 3..20) { "La edad debe estar entre 3 y 20 años" }
         require(totalPlayTimeMinutes >= 0) { "El tiempo de juego no puede ser negativo" }

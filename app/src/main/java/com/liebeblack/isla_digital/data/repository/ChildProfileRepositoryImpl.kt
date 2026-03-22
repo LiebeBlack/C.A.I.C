@@ -1,6 +1,7 @@
 package com.liebeblack.isla_digital.data.repository
 
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import com.liebeblack.isla_digital.domain.model.ChildProfile
 import com.liebeblack.isla_digital.domain.repository.ChildProfileRepository
 import kotlinx.coroutines.channels.awaitClose
@@ -56,7 +57,7 @@ class ChildProfileRepositoryImpl(
     override suspend fun saveProfile(profile: ChildProfile): Result<Unit> {
         return try {
             val json = jsonSerializer.encodeToString(profile)
-            prefs.edit().putString(PROFILE_KEY, json).apply()
+            prefs.edit { putString(PROFILE_KEY, json) }
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)
@@ -65,7 +66,7 @@ class ChildProfileRepositoryImpl(
 
     override suspend fun deleteProfile(): Result<Unit> {
         return try {
-            prefs.edit().remove(PROFILE_KEY).apply()
+            prefs.edit { remove(PROFILE_KEY) }
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)

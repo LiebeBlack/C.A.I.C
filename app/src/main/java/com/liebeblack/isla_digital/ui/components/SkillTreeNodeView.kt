@@ -38,9 +38,9 @@ fun SkillTreeNodeView(
     skillNode: SkillNode,
     isUnlocked: Boolean,
     isCompleted: Boolean,
+    modifier: Modifier = Modifier,
     xpEarned: Int = 0,
-    onClick: () -> Unit = {},
-    modifier: Modifier = Modifier
+    onClick: () -> Unit = {}
 ) {
     val colors = IslaAdaptiveTheme.colors
     val config = IslaAdaptiveTheme.typoConfig
