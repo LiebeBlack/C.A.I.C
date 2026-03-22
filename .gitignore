@@ -1,0 +1,60 @@
+# Built application files
+*.apk
+*.aar
+*.ap_
+*.aab
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Gradle files
+.gradle/
+build/
+app/build/
+**/build/
+
+# IDE files (IntelliJ, Android Studio)
+.idea/
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/vcs.xml
+*.iml
+*.iws
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+
+# Mac OS files
+.DS_Store
+
+# C/C++ build system
+.externalNativeBuild
+.cxx
+*.so
+*.o
+*.obj
+*.exe
+*.dll
+*.dylib
+
+# Kotlin files
+.kotlin_module
+
+# Keystore files
+*.jks
+*.keystore
+
+# Google Services
+google-services.json
+
+# Test reports
+/captures/
+.externalNativeBuild/
+.cxx/
