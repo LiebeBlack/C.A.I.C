@@ -54,11 +54,12 @@ fun NavGraph(
     currentPhase: DigitalPhase = DigitalPhase.SENSORIAL
 ) {
     // El Shell de la aplicación con la BottomBar adaptativa
-    MainScreen(navController = navController) {
-        NavHost(
-            navController = navController,
-            startDestination = Screen.Home.route
-        ) {
+    MainScreen(navController = navController) { paddingValues ->
+        Box(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
+            NavHost(
+                navController = navController,
+                startDestination = Screen.Home.route
+            ) {
             composable(Screen.Home.route) {
                 val homeViewModel: HomeViewModel = viewModel(
                     factory = viewModelFactory { initializer { HomeViewModel(repository) } }
@@ -191,4 +192,5 @@ fun NavGraph(
             }
         }
     }
+}
 }

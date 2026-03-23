@@ -150,9 +150,9 @@ private fun QuickStatsRow(profile: ChildProfile?) {
     if (profile == null) return
     val colors = IslaAdaptiveTheme.colors
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-        QuickStat("Nivel", "${profile.currentLevel}", Icons.Rounded.TrendingUp)
-        QuickStat("Medallas", "${profile.earnedBadges.size}", Icons.Rounded.Star)
-        QuickStat("Tiempo", "${profile.totalPlayTimeMinutes}m", Icons.Rounded.Timer)
+        QuickStat("Nivel", "${profile.currentLevel}", Icons.AutoMirrored.Rounded.TrendingUp)
+        QuickStat("Medallas", "${profile.earnedBadges.size}", Icons.AutoMirrored.Rounded.Star)
+        QuickStat("Tiempo", "${profile.totalPlayTimeMinutes}m", Icons.AutoMirrored.Rounded.Timer)
     }
 }
 

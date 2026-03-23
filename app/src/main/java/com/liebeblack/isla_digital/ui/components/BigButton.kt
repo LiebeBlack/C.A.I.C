@@ -55,7 +55,12 @@ fun BigButton(
                     onPress = {
                         isPressed = true
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                        val released = tryAwaitRelease()
+                        val released = try {
+                            awaitRelease()
+                            true
+                        } catch (e: Exception) {
+                            false
+                        }
                         isPressed = false
                         if (released) {
                             currentOnClick()

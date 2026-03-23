@@ -44,21 +44,23 @@ class MainActivity : ComponentActivity() {
                 }
             )
             val uiState by homeViewModel.uiState.collectAsStateWithLifecycle()
-            val currentPhase = when (val state = uiState) {
-                is HomeUiState.Success -> {
-                    if (state.profile != null) {
-                        DigitalPhase.fromAge(state.profile.age)
-                    } else DigitalPhase.SENSORIAL
+            val currentPhase = remember(uiState) {
+                when (val state = uiState) {
+                    is HomeUiState.Success -> {
+                        state.profile?.let { DigitalPhase.fromAge(it.age) } ?: DigitalPhase.SENSORIAL
+                    }
+                    else -> DigitalPhase.SENSORIAL
                 }
-                else -> DigitalPhase.SENSORIAL
+            }
+
+            val currentLevel = remember(uiState) {
+                (uiState as? HomeUiState.Success)?.profile?.currentLevel ?: 1
             }
 
             var previousPhase by remember { mutableStateOf<DigitalPhase?>(null) }
             var previousLevel by remember { mutableIntStateOf(-1) }
             var showEvolution by remember { mutableStateOf(false) }
             var showLevelUp by remember { mutableStateOf(false) }
-
-            val currentLevel = (uiState as? HomeUiState.Success)?.profile?.currentLevel ?: 1
 
             LaunchedEffect(currentPhase) {
                 if (previousPhase != null && previousPhase != currentPhase) {

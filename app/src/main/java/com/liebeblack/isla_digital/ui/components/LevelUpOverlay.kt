@@ -30,31 +30,33 @@ fun LevelUpOverlay(
     isVisible: Boolean,
     onDismiss: () -> Unit
 ) {
-    if (!isVisible) return
-
     val colors = IslaAdaptiveTheme.colors
-    var showContent by remember { mutableStateOf(false) }
+    val infiniteTransition = rememberInfiniteTransition(label = "pulse")
+    val scale by infiniteTransition.animateFloat(
+        initialValue = 0.95f,
+        targetValue = 1.05f,
+        animationSpec = infiniteRepeatable(tween(1000, easing = FastOutSlowInEasing), RepeatMode.Reverse),
+        label = "scale"
+    )
 
     LaunchedEffect(isVisible) {
         if (isVisible) {
-            delay(200)
-            showContent = true
-            delay(2500)
+            delay(3000)
             onDismiss()
         }
     }
 
-    Box(
-        modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)),
-        contentAlignment = Alignment.Center
+    AnimatedVisibility(
+        visible = isVisible,
+        enter = fadeIn() + scaleIn(initialScale = 0.8f, animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy)),
+        exit = fadeOut(tween(400)) + scaleOut(targetScale = 1.1f)
     ) {
-        AnimatedVisibility(
-            visible = showContent,
-            enter = fadeIn() + scaleIn(tween(600, easing = OvershootInterpolator(2f).asEasing())),
-            exit = fadeOut()
+        Box(
+            modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.6f)),
+            contentAlignment = Alignment.Center
         ) {
             Surface(
-                modifier = Modifier.padding(32.dp),
+                modifier = Modifier.padding(32.dp).scale(scale),
                 shape = CircleShape,
                 color = colors.surface,
                 tonalElevation = 8.dp,

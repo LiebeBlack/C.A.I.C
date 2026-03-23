@@ -32,34 +32,29 @@ fun PhaseTransitionOverlay(
     isVisible: Boolean,
     onDismiss: () -> Unit
 ) {
-    if (!isVisible) return
-
     val colors = PhaseColors.forPhase(newPhase)
-    var showContent by remember { mutableStateOf(false) }
 
     LaunchedEffect(isVisible) {
         if (isVisible) {
-            delay(300)
-            showContent = true
-            delay(3000)
+            delay(4000)
             onDismiss()
         }
     }
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(
-                brush = Brush.verticalGradient(
-                    listOf(colors.backgroundGradientStart, colors.backgroundGradientEnd)
-                )
-            ),
-        contentAlignment = Alignment.Center
+    AnimatedVisibility(
+        visible = isVisible,
+        enter = fadeIn(tween(800)) + expandVertically(expandFrom = Alignment.CenterVertically),
+        exit = fadeOut(tween(600)) + shrinkVertically(shrinkTowards = Alignment.CenterVertically)
     ) {
-        AnimatedVisibility(
-            visible = showContent,
-            enter = fadeIn(tween(1000)) + scaleIn(tween(1000, easing = FastOutSlowInEasing)),
-            exit = fadeOut(tween(500))
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    brush = Brush.verticalGradient(
+                        listOf(colors.backgroundGradientStart, colors.backgroundGradientEnd)
+                    )
+                ),
+            contentAlignment = Alignment.Center
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
