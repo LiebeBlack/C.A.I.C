@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">LB\'s</string>
+    <string name="app_name">E.E.D.A</string>
+    <string name="developed_by">Desarrollado por Yoangel Gómez</string>
+    <string name="tech_by">Con tecnología de LBs</string>
 </resources>

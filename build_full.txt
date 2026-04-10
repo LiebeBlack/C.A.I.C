@@ -1,0 +1,46 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.5.0-milestone-7/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Configuration on demand is an incubating feature.
+Calculating task graph as no cached configuration is available for tasks: clean build
+This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+Checking the license for package Android SDK Build-Tools 35 in C:\Users\Liebe\AppData\Local\Android\Sdk\licenses
+License for package Android SDK Build-Tools 35 accepted.
+Preparing "Install Android SDK Build-Tools 35 v.35.0.0".
+"Install Android SDK Build-Tools 35 v.35.0.0" ready.
+Installing Android SDK Build-Tools 35 in C:\Users\Liebe\AppData\Local\Android\Sdk\build-tools\35.0.0
+"Install Android SDK Build-Tools 35 v.35.0.0" complete.
+"Install Android SDK Build-Tools 35 v.35.0.0" finished.
+
+1 problem was found storing the configuration cache.
+- Task `:app:generateDebugUnitTestLintModel` of type `com.android.build.gradle.internal.lint.LintModelWriterTask`: error writing value of type 'org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection'
+
+See the complete report at file:///C:/Users/Liebe/Documents/Proyectos/E.E.D.A-Android/build/reports/configuration-cache/5rpfif3wyfnzdtactd53unxfm/dfjja8hpimtqm9r7kzep68m81/configuration-cache-report.html
+
+[Incubating] Problems report is available at: file:///C:/Users/Liebe/Documents/Proyectos/E.E.D.A-Android/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Configuration cache state could not be cached: field `__compileLintModelMetadataFileCollection__` of `com.android.build.gradle.internal.lint.JavaArtifactInput_Decorated` bean found in field `__testArtifact__` of `com.android.build.gradle.internal.lint.VariantInputs_Decorated` bean found in field `__variantInputs__` of task `:app:generateDebugUnitTestLintModel` of type `com.android.build.gradle.internal.lint.LintModelWriterTask`: error writing value of type 'org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection'
+> Could not resolve all files for configuration ':app:debugUnitTestCompileClasspath'.
+   > Could not find org.junit.platform:junit-platform-suite:5.11.0.
+     Required by:
+         project ':app'
+   > Could not find org.junit.platform:junit-platform-suite:5.11.0.
+     Required by:
+         project ':app' > org.junit:junit-bom:5.11.0
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.5.0-milestone-7/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 1m 57s
+Configuration cache entry discarded due to serialization error.
